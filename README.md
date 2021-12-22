@@ -1,5 +1,9 @@
 # Comandos de consola
 
+Pasos generales:
+
+Armar los proyectos, compilar, configurar el debugging.
+
 ## Creando un Proyecto .NET
 
 ### Crear la solución (crea una carpeta con el archivo .sln)
@@ -46,6 +50,30 @@ https://stackoverflow.com/questions/36343223/create-c-sharp-sln-file-with-visual
 
 -----
 
+## Ejemplo de la creación de un proyecto de consola
+
+### Crear una solución (dentro del mismo directorio)
+dotnet new sln -n exampleSolution
+
+### Crear un nuevo proyecto de consola
+dotnet new console -o exampleConsole
+
+### Asociar el proyecto a la solución
+dotnet sln exampleSolution.sln add ./exampleConsole/exampleConsole.csproj
+
+### Correr mi aplicación:
+dotnet run -p ./exampleConsole/exampleConsole.csproj
+
+### Compilar la aplicación
+dotnet build
+
+### Abrir el proyecto con VS Code (ubicado en la raíz): 
+code .
+
+### Otra forma de abrir una solución de .NET Core en VS Code: abrir la carpeta raíz (la que contiene el .sln) y ahí escanea todos los archivos.
+
+-----
+
 ## Comandos útiles en .NET Core
 
 ### Run
@@ -60,6 +88,14 @@ dotnet clean
 
 ### Test
 dotnet test
+
+-----
+
+## Debugging
+
+- En VSCode, se crea la carpeta .vscode desde la pestaña de debugging.
+- En VSCode, cuando se pone play, se crea el archivo tasks.json para crear la regla build.
+- Se configura launch.json: setear la variable "program".
 
 -----
 
