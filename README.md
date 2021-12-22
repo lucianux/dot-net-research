@@ -72,6 +72,9 @@ code .
 
 ### Otra forma de abrir una solución de .NET Core en VS Code: abrir la carpeta raíz (la que contiene el .sln) y ahí escanea todos los archivos.
 
+### No olvidar de agregar el .gitignore en la raíz (donde está la solución) con este contenido:
+[https://github.com/github/gitignore/blob/main/VisualStudio.gitignore](https://github.com/github/gitignore/blob/main/VisualStudio.gitignore)
+
 -----
 
 ## Comandos útiles en .NET Core
