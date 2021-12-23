@@ -6,28 +6,25 @@ namespace exampleAsyncAwait
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            Task.Run(
-                async () => 
-                {
-                    Thread.Sleep(1000);
-                    Console.WriteLine("The Beginning");
-                    await Robot.LongProcess();
-                    Robot.ShortProcess();
-                    Console.WriteLine("The End");
-                }
-            );
+            Thread.Sleep(1000);
+            Console.WriteLine("The Beginning");
+            Task TLongProcess = Robot.LongProcessAsync();
+
+            Robot.ShortProcess();
+            await TLongProcess;
+
+            Console.WriteLine("The End");
         }
     }
 
     public class Robot
     {
-        public static async Task LongProcess()
+        public static async Task LongProcessAsync()
         {
             Console.WriteLine("LongProcess - It has started");
-            //Thread.Sleep(5000);
-            await Task.Delay(5000);
+            await Task.Delay(3000);
             Console.WriteLine("LongProcess - It has finished");
         }
 
