@@ -24,4 +24,6 @@ https://www.youtube.com/watch?v=9a-tll-wy7M&t=746s // Video de Hector de León
 
 https://geeks.ms/etomas/2011/09/17/c-5-async-await/ // Didáctico
 
+https://dev.to/ebarrioscode/pildoras-de-c-task-parallel-library-tpl-procesamiento-multihilo-y-asincrono-18mp
+
 https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/
