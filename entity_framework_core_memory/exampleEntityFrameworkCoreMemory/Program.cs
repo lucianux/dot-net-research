@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using exampleEntityFrameworkCoreMemory.DataContext;
+using exampleEntityFrameworkCoreMemory.DataContext.Data;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace exampleEntityFrameworkCoreMemory
 {

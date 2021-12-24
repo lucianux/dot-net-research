@@ -5,21 +5,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 using exampleEntityFrameworkCoreMemory.Models;
+using exampleEntityFrameworkCoreMemory.DataContext;
 
 namespace exampleEntityFrameworkCoreMemory.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly AppDbContext _context;
+        public HomeController(ILogger<HomeController> logger, AppDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
+            var albums = _context.Albums.Include(a => a.Artist).ToList();
+
             return View();
         }
 
