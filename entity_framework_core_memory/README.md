@@ -4,6 +4,10 @@
 
 dotnet new mvc -o exampleEntityFrameworkCoreMemory
 
+## Para instalar la librería de Entity Framework Core (compatible con NET CORE 3.1)
+
+dotnet add package Microsoft.EntityFrameworkCore.InMemory --version 3.1.22
+
 ## Para ejecutarlo
 
 dotnet run -p ./exampleEntityFrameworkCoreMemory/exampleEntityFrameworkCoreMemory.csproj
