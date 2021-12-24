@@ -36,7 +36,7 @@ namespace exampleEntityFrameworkCoreMemory.DataContext.Data
                 _context.Albums.AddRange(
                     new Album
                     {
-                        Id = _context.Artists.FirstOrDefault(
+                        ArtistId = _context.Artists.FirstOrDefault(
                             a => a.Name.Equals("Kalimba")).Id,
                         Title = $"Mi Otro Yo",
                         Price = 200
@@ -44,7 +44,7 @@ namespace exampleEntityFrameworkCoreMemory.DataContext.Data
 
                     new Album
                     {
-                        Id = _context.Artists.FirstOrDefault(
+                        ArtistId = _context.Artists.FirstOrDefault(
                             a => a.Name.Equals("Kalimba")).Id,
                         Title = $"Aerosoul",
                         Price = 275
@@ -52,7 +52,7 @@ namespace exampleEntityFrameworkCoreMemory.DataContext.Data
 
                     new Album
                     {
-                        Id = _context.Artists.FirstOrDefault(
+                        ArtistId = _context.Artists.FirstOrDefault(
                             a => a.Name.Equals("Ricardo Arjona")).Id,
                         Title = $"Circo Soledad",
                         Price = 180
