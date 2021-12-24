@@ -11,13 +11,15 @@ dotnet add package Microsoft.Extensions.DependencyInjection
 
 ## Salida (consola)
 
+Puede ser una de estas líneas:
 Message example
+Message example of Hello2
 
 ## Explicación
 
 En este ejemplo hay 2 puntos a remarcar:
 - Se utiliza la interface para obtener la clase concreta.
-- Se puede cambiar la clase concreta (Hello y Hello2) que se obtiene a partir de la interface, en el setup.
+- Se puede cambiar la clase concreta (Hello y Hello2) que se obtiene a partir de la interface, desde el setup.
 
 ## Fuentes
 
