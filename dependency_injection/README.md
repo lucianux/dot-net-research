@@ -4,7 +4,7 @@
 
 dotnet run -p ./exampleDI/exampleDI.csproj
 
-## Para agregarle el paquete que necesitamos
+## Para agregar la librería de inyección de dependencias
 
 cd exampleDI
 dotnet add package Microsoft.Extensions.DependencyInjection
