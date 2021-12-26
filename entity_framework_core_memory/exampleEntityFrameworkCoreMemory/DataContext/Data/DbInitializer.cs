@@ -36,32 +36,32 @@ namespace exampleEntityFrameworkCoreMemory.DataContext.Data
                 _context.Albums.AddRange(
                     new Album
                     {
-                        ArtistId = _context.Artists.FirstOrDefault(
-                            a => a.Name.Equals("Kalimba")).Id,
+                        ArtistID = _context.Artists.FirstOrDefault(
+                            a => a.Name.Equals("Kalimba")).ArtistID,
                         Title = $"Mi Otro Yo",
                         Price = 200
                     },
 
                     new Album
                     {
-                        ArtistId = _context.Artists.FirstOrDefault(
-                            a => a.Name.Equals("Kalimba")).Id,
+                        ArtistID = _context.Artists.FirstOrDefault(
+                            a => a.Name.Equals("Kalimba")).ArtistID,
                         Title = $"Aerosoul",
                         Price = 275
                     },
 
                     new Album
                     {
-                        ArtistId = _context.Artists.FirstOrDefault(
-                            a => a.Name.Equals("Ricardo Arjona")).Id,
+                        ArtistID = _context.Artists.FirstOrDefault(
+                            a => a.Name.Equals("Ricardo Arjona")).ArtistID,
                         Title = $"Circo Soledad",
                         Price = 180
                     },
 
                     new Album
                     {
-                        Id = _context.Artists.FirstOrDefault(
-                            a => a.Name.Equals("Luis Miguel")).Id,
+                        ArtistID = _context.Artists.FirstOrDefault(
+                            a => a.Name.Equals("Luis Miguel")).ArtistID,
                         Title = $"Romance",
                         Price = 290
                     }

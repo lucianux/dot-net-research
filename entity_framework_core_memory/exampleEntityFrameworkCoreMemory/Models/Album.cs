@@ -4,8 +4,8 @@ namespace exampleEntityFrameworkCoreMemory.Models
 {
     public class Album
     {
-        public int Id { get; set; }
-        public int ArtistId { get; set; }
+        public int AlbumID { get; set; }
+        public int ArtistID { get; set; }
         public Artist Artist { get; set; }
 
         public string Title { get; set; }
