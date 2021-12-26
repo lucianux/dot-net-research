@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IList<exampleEntityFrameworkCoreMemory.Models.Album>
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -21,9 +22,9 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.Titulo</td>
-                <td>@item.Artista.Nombre</td>
-                <td>@item.Precio</td>
+                <td>@item.Title</td>
+                <td>@item.Artist.Name</td>
+                <td>@item.Price</td>
             </tr>
         }
     </tbody>
