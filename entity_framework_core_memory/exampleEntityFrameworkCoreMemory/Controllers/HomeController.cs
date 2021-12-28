@@ -25,7 +25,7 @@ namespace exampleEntityFrameworkCoreMemory.Controllers
         {
             var albums = _context.Albums.Include(a => a.Artist).ToList();
 
-            return View();
+            return View(albums);
         }
 
         public IActionResult Privacy()
