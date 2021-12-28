@@ -28,3 +28,9 @@ https://aspnetcoremaster.com/inyeccion-de-dependencias-asp-net-core.html // Es u
 https://dev.to/ebarrioscode/inyeccion-de-dependencias-di-en-asp-net-core-mejores-practicas-para-escribir-codigo-reutilizable-escalable-y-desacoplado-kho
 
 https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-3.0
+
+https://geeks.ms/jorge/2019/02/06/inyeccion-de-dependencias-en-asp-net-core-i/
+
+https://geeks.ms/jorge/2019/02/07/inyeccion-de-dependencias-en-asp-net-core-ii/
+
+https://geeks.ms/jorge/2019/02/09/inyeccion-de-dependencias-en-asp-net-core-iii/
