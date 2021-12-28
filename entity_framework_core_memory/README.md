@@ -12,9 +12,28 @@ dotnet add package Microsoft.EntityFrameworkCore.InMemory --version 3.1.22
 
 dotnet run -p ./exampleEntityFrameworkCoreMemory/exampleEntityFrameworkCoreMemory.csproj
 
-## Salida (consola)
+## Salida (web)
+
+https://localhost:5001/
+Se muestra una grilla con la info cargada.
 
 ## Explicación
+
+Configuración:
+- AppDbContext.cs
+- Startup.cs
+- Program.cs
+
+Modelos:
+- Album.cs
+- Artist.cs
+
+Carga de datos:
+- DbInitializer.cs
+
+Vista:
+- HomeController.cs
+- Index.cshtml
 
 ## Fuentes
 
