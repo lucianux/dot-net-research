@@ -1,3 +1,51 @@
+# Interesting topics
+
+## Async / Await
+
+Async: se aplica a la declaración de un método. Lo que indica es que un método se quiere sincronizar con métodos que se ejecutarán de forma asíncrona. Declarar un método como async es requisito indispensable para poder usar await.
+
+Await: esta palabre clave permite que un método que ha llamado a otro método asíncrono se espere a que dicho método asíncrono termine. No usamos await cuando llamamos al método asíncrono, lo hacemos más tarde cuando queremos esperarnos a que dicho método termine (y recoger el resultado).
+
+## LINQ
+
+... INCOMPLETE ...
+
+## Solid
+
+... INCOMPLETE ...
+
+## Delegate
+
+In .NET, System.Action and System.Func types provide generic definitions for many common delegates.
+The declaration of a delegate type is similar to a method signature. It has a return value and any number of parameters of any type.
+A delegate can be instantiated by associating it either with a named or anonymous method.
+Delegates are the basis for Events.
+
+https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/reference-types#the-delegate-type -- Intro
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/delegates/ -- Base
+
+## Abstract class and methods.
+
+The purpose of an abstract class is to provide a common definition of a base class that multiple derived classes can share.
+An abstract class cannot be instantiated.
+Abstract methods have no implementation.
+DERIVED CLASSES OF THE ABSTRACT CLASS MUST IMPLEMENT ALL ABSTRACT METHODS. 
+Fuente:
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/abstract-and-sealed-classes-and-class-members
+
+## Sealed class and methods
+
+A sealed class cannot be used as a base class.
+Sealed classes prevent derivation.
+This negates the virtual aspect of the member for any further derived class.
+
+## Virtual vs Abstract
+
+Virtual methods have an implementation and provide the derived classes with the option of overriding it. Abstract methods do not provide an implementation and force the derived classes to override the method.
+So, abstract methods have no actual code in them, and subclasses HAVE TO override the method. Virtual methods can have code, which is usually a default implementation of something, and any subclasses CAN override the method using the override modifier and provide a custom implementation.
+Fuente:
+https://stackoverflow.com/questions/14728761/difference-between-virtual-and-abstract-methods
+
 # Comandos de consola
 
 Pasos generales:
