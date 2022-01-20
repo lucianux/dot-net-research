@@ -28,8 +28,14 @@ The declaration of a delegate type is similar to a method signature. It has a re
 A delegate can be instantiated by associating it either with a named or anonymous method.
 Delegates are the basis for Events.
 
+Fuente:
 https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/reference-types#the-delegate-type -- Intro
 https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/delegates/ -- Base
+
+The difference between Func and Action is simply whether you want the delegate to return a value (use Func) or not (use Action).
+
+Fuente:
+https://stackoverflow.com/questions/4317479/func-vs-action-vs-predicate
 
 ## Abstract class and methods.
 
