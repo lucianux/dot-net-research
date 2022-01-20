@@ -21,6 +21,10 @@ https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/
 
 ... INCOMPLETE ...
 
+## Dependency Injection
+
+... INCOMPLETE ...
+
 ## Delegate
 
 In .NET, System.Action and System.Func types provide generic definitions for many common delegates.
@@ -58,6 +62,8 @@ Virtual methods have an implementation and provide the derived classes with the 
 So, abstract methods have no actual code in them, and subclasses HAVE TO override the method. Virtual methods can have code, which is usually a default implementation of something, and any subclasses CAN override the method using the override modifier and provide a custom implementation.
 Fuente:
 https://stackoverflow.com/questions/14728761/difference-between-virtual-and-abstract-methods
+
+-----
 
 # Comandos de consola
 
@@ -111,7 +117,7 @@ https://stackoverflow.com/questions/36343223/create-c-sharp-sln-file-with-visual
 
 -----
 
-## Ejemplo de la creación de un proyecto de consola
+## Ejemplo de la creación de un proyecto simple de consola
 
 ### Crear una solución (dentro del mismo directorio)
 dotnet new sln -n exampleSolution
@@ -152,6 +158,9 @@ dotnet clean
 
 ### Test
 dotnet test
+
+### Restore
+dotnet restore
 
 -----
 
