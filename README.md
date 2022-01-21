@@ -162,6 +162,9 @@ dotnet test
 ### Restore
 dotnet restore
 
+### Publish a release
+dotnet publish -c Release
+
 -----
 
 ## Debugging
