@@ -162,6 +162,9 @@ dotnet test
 ### Restore
 dotnet restore
 
+### Show installed packages
+dotnet list [filename].sln package
+
 ### Publish a release
 dotnet publish -c Release
 
