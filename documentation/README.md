@@ -238,7 +238,7 @@ En la __segunda parte__, "Net Community - Net Core Training", se relevó lo sigui
 
 **Lo que toca hacer es revisar estos branches para comprobar su funcionamiento**
 
--- Contenido de la parte teórica (el material se basa en .NET Framework y no en .NET Core)
+### Contenido de la parte teórica (el material se basa en .NET Framework y no en .NET Core)
 
 Web Api
 - What is Web Api
