@@ -39,6 +39,10 @@ https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnet
 
 ---
 
+- I added corresponding Postman collection to test this Web API.
+
+---
+
 *Plataforma usada:*
 - .NET Core SDK 3.1.407
 - SO: Windows 10 (aunque debería andar en Linux)
