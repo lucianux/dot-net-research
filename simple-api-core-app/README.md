@@ -1,5 +1,5 @@
-# simple-api-core-app - an exercise of mygrowth
-A simple application that corresponds to a mission.
+# simple-api-core-app
+A simple application based on ASP Net Core Web API.
 
 ## Instrucciones del paso a paso:
 https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-3.1
