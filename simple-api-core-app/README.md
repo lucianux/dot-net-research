@@ -2,7 +2,7 @@
 A simple application that corresponds to a mission.
 
 ## Instrucciones del paso a paso:
-https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-3.1&tabs=visual-studio-code#add-a-database-context-2
+https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-3.1
 
 ## Comandos usados para construir la estructura base del proyecto:
 
@@ -36,3 +36,9 @@ https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnet
 
 *Generar el controller con el generador de código (se debe entrar al proyecto Web API)*
 - dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m TodoItem -dc TodoContext -outDir Controllers
+
+---
+
+*Plataforma usada:*
+- .NET Core SDK 3.1.407
+- SO: Windows 10 (aunque debería andar en Linux)
