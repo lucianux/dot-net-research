@@ -23,7 +23,25 @@ https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/
 
 ## Dependency Injection
 
-... INCOMPLETE ...
+Este mecanismo trata de evitar el acoplamiento entre clases utilizando interfaces. Con ésto se consigue (o se intenta) que cada clase tenga una función única.
+
+En .NET Core se tiene la posibilidad de utilizar el patrón Inyección de Dependencias de forma nativa, que nos permite hacer la IoC o inversión de control sin tener que utilizar otro software de terceros. La librería que se encarga de todo ésto es: Microsoft.Extensions.DependencyInjection
+
+Como sucede con toda librería de Inyección de Dependencias, lo único que debemos hacer es registrar de alguna manera la interfaz y la implementación a utilizar de forma que al resolverse se haga de forma automática, para luego recuperarla con el objetivo de poder trabajar con ella en la parte de código que tenga la necesidad de utilizarla.
+
+Hay 3 tipos de inyección de dependencias
+- Inyección de dependencias en parámetros de constructor.
+- Inyección de propiedades (setters).
+- Inyección de dependencias en parámetros de métodos.
+
+**En ASP.NET Core**
+
+El método ConfigureServices de la clase Startup nos permitirá configurar o registrar los servicios de aplicación. Se llama servicios a las clases que pertenecen a otro proyecto; hay dos tipos de servicios: los del propio Framework y los de la aplicación.
+
+Fuentes:
+- https://geeks.ms/jorge/2019/02/06/inyeccion-de-dependencias-en-asp-net-core-i/
+- https://geeks.ms/jorge/2019/02/07/inyeccion-de-dependencias-en-asp-net-core-ii/
+- https://geeks.ms/jorge/2019/02/09/inyeccion-de-dependencias-en-asp-net-core-iii/
 
 ## Delegate
 
