@@ -1,1 +1,335 @@
-kk
+- Problema: ABM.
+
+Requisitos técnicos:
+- C# (.net core >3.0)/Golang
+- Utilizar Clean-Arquitecture
+- DB: MongoDb ... +++
+- Unit tests ... +++
+- El servicio se debe poder correr localmente utilizando Docker. Incluir readme con instrucciones ... +++
+- Incluir collection de Postman con ejemplos de utilización de cada endpoint ... +++
+/ Commit en GitLab ... Ok
+
+- Voy a necesitar que instalen MongoDB a mi PC... Ya fué
+
+Temas vistos en el examen:
+- Inyección de Dependencias.
+- Filters en MVC.
+- LinQ
+
+-----
+
+Plan:
+
+* Preparar el ambiente: Docker + .NET Core + MongoDB
+  - Hay potencial, levanté una prueba.. 70%
+  - Me falta acomodarme a los comandos de Docker para facilitar el desarrollo. O sea, tener una lista de comandos más utilizados.
+* Desarrollo
+  - Clean Architecture.
+  - Unit Tests.
+* Deploy y preparación del paquete Docker.
+  - Deployar una imagen en Docker Hub, por ejemplo.
+  - Publicar en Gitlab.
+* Pruebas en Postman.
+  - Se puede realizar en cualquier momento (ya tengo un entorno para probar).
+
+Hoy:
+- Acomodar mi entorno para desarrollar... Ok
+- Aprender Clean Architecture.
+- Comenzar a desarrollar.
+
+Falta:
+- Cambiar la versión de .net core a > 3.0 en Docker.
+- Instalar .NET Core en Ubuntu... OK
+
+-----
+
+Desarrollo:
+
+- Descargué el código del repositorio:
+https://gitlab.com/kriss-blog/docker-dotnet-mongo
+- Levantar los servicios:
+$ sudo docker-compose up -d
+- Listar los contenedores:
+$ sudo docker ps -a
+- Bajar todos los contenedores:
+$ sudo docker-compose rm -s -f
+- Listar las imagenes descargadas
+$ sudo docker images -a
+
+- Borrar todos los contenedores, incluyendo sus volúmenes
+$ sudo docker rm -vf $(sudo docker ps -a -q)
+- Borrar todas las imagenes:
+$ sudo docker rmi -f $(sudo docker images -a -q)
+
+Para reconstruir:
+$ sudo docker-compose build
+o
+$ sudo docker-compose up --build
+
+API
+http://localhost:5000/api/todos
+
+SWAGGER
+http://localhost:5000/swagger/index.html
+
+PANEL DE MONGODB
+http://localhost:8081/
+
+-----
+
+Creando un Proyecto .NET
+
+- Crear la solución (crea una carpeta con el archivo .sln)
+dotnet new sln -o PaymentFacilities
+
+- Crear los proyectos (más info con dotnet new -l)
+dotnet new webapi -o PaymentFacilities.WebApi
+dotnet new classlib -o PaymentFacilities.Core
+dotnet new classlib -o PaymentFacilities.SharedKernel
+dotnet new classlib -o PaymentFacilities.Infraestructure
+
+- Agregar un proyecto a la solución
+dotnet sln PaymentFacilities.sln add ./PaymentFacilities.WebApi/PaymentFacilities.WebApi.csproj
+dotnet sln PaymentFacilities.sln add ./PaymentFacilities.Core/PaymentFacilities.Core.csproj
+dotnet sln PaymentFacilities.sln add ./PaymentFacilities.SharedKernel/PaymentFacilities.SharedKernel.csproj
+dotnet sln PaymentFacilities.sln add ./PaymentFacilities.Infraestructure/PaymentFacilities.Infraestructure.csproj
+
+- Agregar referencias
+dotnet add ./PaymentFacilities.Core/PaymentFacilities.Core.csproj reference ./PaymentFacilities.SharedKernel/PaymentFacilities.SharedKernel.csproj
+dotnet add ./PaymentFacilities.WebApi/PaymentFacilities.WebApi.csproj reference ./PaymentFacilities.SharedKernel/PaymentFacilities.SharedKernel.csproj
+dotnet add ./PaymentFacilities.WebApi/PaymentFacilities.WebApi.csproj reference ./PaymentFacilities.Infraestructure/PaymentFacilities.Infraestructure.csproj
+dotnet add ./PaymentFacilities.WebApi/PaymentFacilities.WebApi.csproj reference ./PaymentFacilities.Core/PaymentFacilities.Core.csproj
+dotnet add ./PaymentFacilities.Infraestructure/PaymentFacilities.Infraestructure.csproj reference ./PaymentFacilities.SharedKernel/PaymentFacilities.SharedKernel.csproj
+dotnet add ./PaymentFacilities.Infraestructure/PaymentFacilities.Infraestructure.csproj reference ./PaymentFacilities.Core/PaymentFacilities.Core.csproj
+
+- Agregar librerías
+dotnet add ./PaymentFacilities.Infraestructure/PaymentFacilities.Infraestructure.csproj package Autofac --version 5.2.0
+dotnet add ./PaymentFacilities.WebApi/PaymentFacilities.WebApi.csproj package Autofac.Extensions.DependencyInjection --version 6.0.0
+dotnet add ./PaymentFacilities.Infraestructure/PaymentFacilities.Infraestructure.csproj package MediatR
+dotnet add ./PaymentFacilities.SharedKernel/PaymentFacilities.SharedKernel.csproj package MongoDB.Driver --version 2.11
+dotnet add ./PaymentFacilities.Infraestructure/PaymentFacilities.Infraestructure.csproj package Autofac.Extensions.DependencyInjection --version="6.0.0"
+
+- Correr
+dotnet run -p ./PaymentFacilities.WebApi/PaymentFacilities.WebApi.csproj
+
+- Pruebas
+http://localhost:5000/api/WeatherForecast
+http://localhost:5000/api/PaymentFacilities
+http://localhost:3000/api/PaymentFacilities/getPaymentFacility/1
+
+Fuente
+https://stackoverflow.com/questions/36343223/create-c-sharp-sln-file-with-visual-studio-code
+
+Commands en .NET Core
+
+- Run
+dotnet run
+dotnet run -p ./PaymentFacilities.WebApi/PaymentFacilities.WebApi.csproj
+
+- Build
+dotnet build
+
+-Clean
+dotnet clean
+
+-Test
+dotnet test
+
+-----
+
+Install .NET 5.0 (= Core 4.0)
+
+- Primero, bajar:
+wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+
+- Segundo, instalar:
+sudo apt-get update; \
+  sudo apt-get install -y apt-transport-https && \
+  sudo apt-get update && \
+  sudo apt-get install -y dotnet-sdk-5.0
+
+- Tercero, check:
+dotnet --list-sdks
+dotnet --list-runtimes
+dotnet --info
+
+- Opcional
+sudo apt-get install -y dotnet-sdk-3.1
+
+Fuentes:
+https://docs.microsoft.com/en-us/dotnet/core/install/how-to-detect-installed-versions?pivots=os-linux
+https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004-
+
+TargetFrameworks en .csproj:
+https://docs.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props#targetframeworks
+https://docs.microsoft.com/en-us/dotnet/standard/frameworks
+
+-----
+
+Links:
+
+https://medium.com/@kristaps.strals/docker-mongodb-net-core-a-good-time-e21f1acb4b7b
+
+Clean Architecture
+https://www2.deloitte.com/es/es/pages/technology/articles/clean-architecture.html
+https://www.reddit.com/r/dotnetcore/comments/btv7ey/looking_for_scaffolding_for_clean_architecture/
+https://github.com/bancolombia/scaffold-clean-architecture  ... Plugin de Gradle para crear un scaffold en JAVA de Clean Architecture
+https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html ... Postulados
+http://xurxodev.com/por-que-utilizo-clean-architecture-en-mis-proyectos/
+https://github.com/ardalis/cleanarchitecture ... Template de Clean Architecture
+
+Routing
+https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing?view=aspnetcore-5.0
+
+Docker
+https://docs.docker.com/engine/reference/builder/   ... Referencia de Dockerfile
+
+-----
+
+Data
+
+{
+  "mediosDePago": [
+    "TARJETA_CREDITO", "EFECTIVO"
+  ],
+  "bancos": [
+    "Galicia", "Ciudad"
+  ],
+  "categoriasProductos": [
+    "hogar", "jardin"
+  ],
+  "maximaCantidadDeCuotas": 0,
+  "valorInteresCuotas": 0,
+  "porcentajeDeDescuento": 0,
+  "fechaInicio": "2020-11-28T16:10:33.206Z",
+  "fechaFin": "2020-11-28T16:10:33.206Z",
+  "activo": true,
+  "fechaCreacion": "2020-11-28T16:10:33.206Z",
+  "fechaModificacion": "2020-11-28T16:10:33.206Z"
+}
+
+-----------------------
+
+Proyecto Consensus
+------------------
+https://github.com/aspnetrun/run-aspnetcore
+https://medium.com/aspnetrun/layered-architecture-with-asp-net-core-entity-framework-core-and-razor-pages-53a54c4028e3
+
+Test
+----
+
+$ dotnet test
+
+Instalación
+-----------
+
+- Instalar un python 3.5 a 3.8, y 2.7.9 o superior.
+- Bajar el Google Cloud SDK:
+curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-317.0.0-linux-x86_64.tar.gz
+- Instalar el SDK:
+./google-cloud-sdk/install.sh
+- Incializar el SDK:
+./google-cloud-sdk/bin/gcloud init
+
+Crear una aplicación
+--------------------
+
+- Actualizar el SDK:
+./google-cloud-sdk/bin/gcloud components update
+- Crear el proyecto "figure-factory"
+./google-cloud-sdk/bin/gcloud projects create figure-factory --set-as-default
+- Comprobar que se creó el proyecto "figure-factory":
+./google-cloud-sdk/bin/gcloud projects describe figure-factory
+- Inicializar la app de App Engine con el proyecto
+./google-cloud-sdk/bin/gcloud app create --project=figure-factory
+
+Deploy
+------
+
+- Agregar estas líneas al archivo de config del proyecto Web (*.csproj):
+  <ItemGroup>
+    <None Update="app.yaml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+
+- Armar el bundle:
+dotnet publish -c Release
+
+- Deploy:
+./google-cloud-sdk/bin/gcloud app deploy ./Desarrollos\ .NET\ Core/Desarrollo\ Consensus/run-aspnetcore-master/src/AspnetRun.Web/bin/Release/netcoreapp3.1/publish/app.yaml
+
+Fuente:
+https://wideops.com/4-ways-you-can-deploy-an-asp-net-core-app-to-gcp/
+
+Debugging
+---------
+
+- Usar el archivo .vscode/launch.json y .vscode/tasks.json dentro de la raíz de la solución. Copiarlos de algún repositorio de Github conocido como el que tengo yo.
+
+Endpoints
+---------
+
+https://localhost:5001/WeatherForecast -- API
+https://localhost:5001/swagger/index.html -- Test APIs
+https://localhost:5001/Product -- Web
+https://figure-fact.rj.r.appspot.com/ -- App en Google Cloud
+
+Links
+-----
+
+https://cloud.google.com/appengine/docs/flexible/dotnet/quickstart
+
+Troubleshootings
+----------------
+
+Problema: cuando se quiere deployar, aparece el siguiente cartel de error..
+ERROR: (gcloud.app.deploy) NOT_FOUND: Unable to retrieve P4SA: [service-503905998725@gcp-gae-service.iam.gserviceaccount.com] from GAIA. Could be GAIA propagation delay or request from deleted apps.
+Solución: volver a deployar.
+
+Problema: estaba corriendo la app en modo Producción
+Solución: crear el archivo "Properties/launchSettings.json".
+
+Problema: no se podía acceder a los endpoints, respondían con un 404.
+Solución: se debían habilitar los endpoints en Startup.cs: agregar esta línea de código endpoints.MapControllers();
+
+Layers
+------
+
+- Core: Entities, Interfaces, Specifications, ValueObjects, Exceptions.
+- Infrastructure: Data, Repository, Services, Migrations, Logging, Exceptions.
+- Application: Interfaces, Services, Dtos, Mapper, Exceptions.
+- Web: Interfaces, Services, Pages, ViewModels, Extensions, AutoMapper.
+
+Planteo del problema
+--------------------
+
+- Registro de los resultados devueltos por el método getProduction.
+- Detalle de los sets
+Id  Combinación  Cantidad   Precio unitario   Precio total del set
+1   1            5          200               1000
+2   2            2          100               200
+
+- Totales (uno por producción diaria)
+Id  Precio total de todos los sets   Total en costos (60%)   Ganancia
+1   1200                             720 (1200 / 100 * 60)   40% ((1200 - 720) / 1200 * 100)
+
+- Tabla combinación:
+Id  Cu-Ci-Ci-Cu  Cu-Ci-Tr-Cu  Cu-Cu-Cu-Cu ...
+1   1            0            0          
+2   0            1            0
+3   0            0            1
+
+- Histórico (un registro por fecha):
+Id  Fecha  Precio total de todos los sets   Total en costos (60%)   Ganancia  Cu-Ci-Ci-Cu  Cu-Ci-Tr-Cu  Cu-Cu-Cu-Cu ... 
+1   2/1/21 1200                             720                     40%       10           20           15
+
+- Estructura de datos que retorna GetProduction:
+Totales y lista de sets.
+Id  Cu-Ci-Ci-Cu  Cu-Ci-Tr-Cu  Cu-Cu-Cu-Cu ...
+1   1            0            0
+2   0            1            0
+
+
+
