@@ -1,5 +1,7 @@
 # Pipelines
 
+## Link semilla: https://learn.microsoft.com/en-us/azure/devops/pipelines/?view=azure-devops
+
 ## HOW-TO
 
 Lista de cosas a realizar:
