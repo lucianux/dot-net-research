@@ -1,3 +1,276 @@
+Yelp Dataset
+------------
+https://www.yelp.com/dataset/documentation/main
+
+Docker
+------
+
+- Borrar imágenes, contenedores, etc:
+* Listar imágenes:
+$ docker images -a
+* Listar contenedores:
+$ docker ps -a
+* Eliminar los contenedores en estado "exited":
+$ docker rm $(docker ps -a -f status=exited -q)
+Fuente:
+https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes
+* Acceder al Filesystem de una instancia Docker:
+$ docker exec -t -i 897 /bin/bash
+* Para visualizar los logs, se debe activar un servicio:
+$ docker events&
+* Otra forma de ver logs es ejecutando:
+$ docker logs {CONTAINER_ID}
+
+- Me bajé esta imagen de ElasticSearch en el repo de imágenes:
+docker pull docker.elastic.co/elasticsearch/elasticsearch:6.7.0
+
+- Siguiendo la documentación de Elastic para saber qué hacer:
+Fuente:
+https://www.elastic.co/guide/en/elasticsearch/reference/6.7/docker.html
+https://www.elastic.co/guide/en/elasticsearch/reference/6.7/getting-started-concepts.html
+
+- Documentación de Docker Composer:
+https://docs.docker.com/compose/overview/
+
+- Viendo tutoriales para avanzar con la instalación y setup de elasticsearch:
+https://markheath.net/post/exploring-elasticsearch-with-docker
+
+Imagen ELK
+----------
+
+Iniciar ELK:
+$ docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it --name elk sebp/elk
+$ docker start elk
+
+Con Docker Compose:
+$ docker-compose up elk
+
+Parar ELK:
+$ docker stop elk
+
+Acceso a Kibana:
+localhost:5601
+
+Acceso al filesystem de un contenedor:
+docker exec -t -i {CONTAINER ID} /bin/bash
+Fuente:
+https://stackoverflow.com/questions/20813486/exploring-docker-containers-file-system
+
+Primer problema (RESUELTO):
+No se puede arrancar ElasticSearch por un problema en la memoria virtual:
+Para resolverlo rápido en una sesión de linux, se debe ejecutar en la consola:
+# sysctl -w vm.max_map_count=262144
+Para resolverlo permanentemente, se debe actualizar la variable vm.max_map_count en el archivo /etc/sysctl.conf
+
+Loading Data (Prueba)
+------------
+
+- Subiendo datos de Prueba a ElasticSearch
+curl -v -H "Content-Type: application/json" -XPOST "localhost:9200/bank/_doc/_bulk?pretty&refresh" --data-binary "@accounts.json"
+curl "localhost:9200/_cat/indices?v"
+Fuente:
+https://www.elastic.co/guide/en/elasticsearch/reference/6.2/_exploring_your_data.html
+
+Loading Data (Real)
+------------
+
+Intento:
+curl -v -H "Content-Type: application/json" -XPOST "localhost:9200/business/_doc/_bulk?pretty&refresh" --data-binary "@business.json"
+
+- Primer problema (RESUELTO):
+No se pueden subir archivos pesados a la API de ElasticSearch. Devolvía el siguiente mensaje de error:
+< HTTP/1.1 413 Request Entity Too Large
+< content-length: 0
+* HTTP error before end of send, stop sending
+< 
+* Closing connection 0
+
+- Solución:
+Acceder al archivo /etc/elasticsearch/elasticsearch.yml y agregar:
+http.max_content_length: 500mb
+Fuente:
+https://github.com/elastic/elasticsearch/issues/2902
+
+- Problema con CURL cuando extiendo el tamaño a 5gb
+Cuando ejecuto el siguiente comando:
+curl -v -H "Content-Type: application/json" -XPOST "localhost:9200/user/_doc/_bulk?pretty&refresh" --data-binary "@user-actions.json"
+Aparece el siguiente error:
+curl: option --data-binary: out of memory
+curl: try 'curl --help' or 'curl --manual' for more information
+
+---- NO HAY SOLUCIÓN, POR AHORA --------
+
+- Problemas con los Shards - aparecía un WARNING (RESUELTO)
+Aparece un WARNING:
+Warning: 299 Elasticsearch-6.7.0-8453f77 "the default number of shards will change from [5] to [1] in 7.0.0; if you wish to continue using the default of [5] shards, you must manage this on the create index request or with an index template"
+Comencé a averiguar. ¿Qué es un Shard?
+https://www.elastic.co/guide/en/elasticsearch/reference/6.2/_basic_concepts.html#getting-started-shards-and-replicas
+https://www.elastic.co/es/blog/how-many-shards-should-i-have-in-my-elasticsearch-cluster
+Intenté cambiar el número de shards por defecto, reinicié el contenedor y no pude volver a iniciarlo, perdí la instancia de Docker.
+Entonces, no hacer lo que dice este tutorial:
+https://discuss.elastic.co/t/how-change-default-number-of-shards/117985
+- Solución:
+Al borrar la instancia de docker y borrar todos los índices anteriores, se pudo superar este WARNING.
+
+- Problemas con la entrada de Datos
+Cuando quiero subir un documento JSON, devuelve el siguiente error:
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "illegal_argument_exception",
+        "reason" : "Malformed action/metadata line [1], expected START_OBJECT but found [START_ARRAY]"
+      }
+    ],
+    "type" : "illegal_argument_exception",
+    "reason" : "Malformed action/metadata line [1], expected START_OBJECT but found [START_ARRAY]"
+  },
+  "status" : 400
+}
+Tomé una muestra del JSON que contiene los datos y lo validé, al parecer no es válido (le faltan corchetes de array y comas entre registros). Lo corregí y ésto sigue sin funcionar.
+- Causa:
+A los archivos que son Datasets, les falta un ID, aparentemente debe ir antes de cada registro, pertenece a la Metadata:
+{"index":{"_id":"1"}}
+El formato de cada archivo está bien: un objeto por línea.
+- Solución:
+Usar Logstash
+https://stackoverflow.com/questions/36654420/how-can-i-break-up-json-data-with-logstash-and-kibana
+
+Logstash
+--------
+
+- Arrancando con Logstash:
+https://www.elastic.co/guide/en/logstash/current/first-event.html
+https://vocon-it.com/2016/11/17/logstash-hello-world/
+https://elk-docker.readthedocs.io/#creating-dummy-log-entry
+
+- Esperar un poco para que arranque Logstash!!!
+
+- Ejemplo sencillo:
+Ejecutar Logstash:
+# /opt/logstash/bin/logstash --path.data /tmp/logstash/data \
+    -e 'input { stdin { } } output { elasticsearch { hosts => ["localhost"] } }'
+Ver los datos que se ingresaron:
+# http://localhost:9200/_search?pretty
+
+- Ejemplo con un archivo externo (logstash.conf):
+Arrancar logstash con:
+$ docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it -v "$PWD":/home/chuchu --name elk-6 sebp/elk
+input {
+  file {
+    path => "/home/chuchu/minado/minado/input.log"
+  }
+}
+output {
+  file {
+    path => "/home/chuchu/minado/minado/output.log"
+  }
+}
+Luego, se deben crear los archivos input.log y output.log con los permisos (chmod 666 {file}).
+Después se deben abrir 3 consolas dentro del contenedor (docker exec -t -i {CONTAINER ID} /bin/bash).
+Una para ejecutar Logstash:
+/opt/logstash/bin/logstash --path.data /tmp/logstash/data2 -f /home/chuchu/minado/minado/logstash.conf
+Otra para visualizar los datos que entran:
+touch /home/chuchu/minado/minado/output.log; tail -f /home/chuchu/minado/minado/output.log
+Una última para ingresar datos al archivo de entrada:
+echo "Hello Logstash" >> /home/chuchu/minado/minado/input.log
+
+Problema con la carga de archivos JSON:
+No puedo convertir los archivos JSON en algo que pueda leer e un archivo legible por ElasticSearch.
+Lo que necesito es un archivo JSON con índices.
+Fuentes con posibles soluciones:
+https://stackoverflow.com/questions/42029109/logstash-issue-parsing-json-lines-format
+https://www.elastic.co/guide/en/logstash/current/plugins-codecs-json_lines.html
+https://discuss.elastic.co/t/best-way-to-parse-json-input/29809/3
+
+Carga SELECTIVA con Logstash:
+docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it -e LOGSTASH_START=1 -e KIBANA_START=0 -e ELASTICSEARCH_START=0 -v "$PWD":/home/chuchu/minado --name elk-10 sebp/elk
+
+Usando Docker Compose:
+$ docker-compose up elk
+
+# docker-compose.yml
+elk:
+        image: sebp/elk
+        ports:
+                - "5601:5601"
+                - "9200:9200"
+                - "5044:5044"
+        volumes:
+                - "/home/chuchu:/home/chuchu"
+
+
+:: Investigar ::
+https://www.elastic.co/guide/en/logstash/6.7/plugins-outputs-file.html
+https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html
+https://stackoverflow.com/questions/46228719/json-formatting-in-elasticsearch
+https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html
+
+Así tiene que quedar:
+{"index":{"_id":"1"}}
+{"business_id":"ABjONdA5Fw8XBOM65tmW4w","name":"Phend Plumbing & Rooter","address":"343 N Gilbert Rd","city":"Gilbert","state":"AZ","postal_code":"85234","latitude":33.35654,"longitude":-111.7893667,"stars":5.0,"review_count":47,"is_open":1,"attributes":{"BusinessAcceptsCreditCards":"True","ByAppointmentOnly":"True"},"categories":"Plumbing, Water Heater Installation\/Repair, Professional Services, Home Services, Contractors","hours":{"Monday":"7:0-17:0","Tuesday":"7:0-17:30","Wednesday":"7:0-17:30","Thursday":"7:0-17:30","Friday":"7:0-17:30","Saturday":"8:0-17:0"}}
+{"index":{"_id":"2"}}
+{"business_id":"ZidLd2a1uJCMfIhLylX5ww","name":"Team Canine","address":"","city":"Phoenix","state":"AZ","postal_code":"85076","latitude":33.3471603,"longitude":-111.9753799,"stars":4.5,"review_count":19,"is_open":1,"attributes":null,"categories":"Pet Training, Professional Services, Pet Services, Pets","hours":{"Monday":"8:0-19:30","Tuesday":"8:0-19:30","Wednesday":"8:0-19:30","Thursday":"8:0-19:30","Friday":"8:0-19:30","Saturday":"8:0-19:30","Sunday":"8:0-15:0"}}
+
+:: Investigación ::
+
+Los campos que tienen {"index":{"_id":"1"}} se llaman Actions, son las operaciones que se realizan por cada documento, en este caso, es una indexación.
+Acá está la documentación oficial donde dice que se deben agregar las acciones:
+https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html
+Viendo algunos campos que pueden ir en "filter", como "mutate" y "json".
+Si se incluye _index y _type (localhost:9200/your_index/your_type/_bulk), no hace falta agregarlo en cada action, quedaría: {"index":{}}
+Una forma es agregando múltiples actions de forma manual.
+Acá se discute acerca de cómo hacer para agregar documentos de forma masiva:
+https://stackoverflow.com/questions/33340153/elasticsearch-bulk-index-json-data
+Acá también:
+https://github.com/elastic/elasticsearch-js/issues/401
+Acá se explica como funciona el indexado masivo:
+https://qbox.io/blog/understanding-bulk-indexing-in-elasticsearch
+
+Probar:
+curl -s -XPOST localhost:9200/my_index/my_index_type/_bulk -H "Content-Type: application/x-ndjson" --data-binary @D:\data\mydata.json
+
+- SOLUCION (para la carga masiva)
+Script para la carga masiva de documentos:
+#!/usr/bin/env python
+import sys
+if not (len(sys.argv) == 2):
+  print "Falta el nombre del archivo"
+else:
+  filepath = str(sys.argv[1])
+  metadata='{ "index": { }}'
+  with open(filepath, mode="r") as my_file:
+    for line in my_file:
+      print(metadata)
+      print(line.rstrip("\n"))
+Se invoca de esta forma:
+$ python script.py my_dataset.json > dataset_with_actions.json
+
+TO DO LIST
+----------
+
+- (LISTO) Instalar Guest Additions en la máquina virtual para que funcionen las funciones de la VM.
+- (LISTO) Instalación y setup de ElasticSearch.
+- (LISTO) Carga de datos de prueba.
+- (LISTO) Cargar de datos reales (se transformaron los datos de forma manual, con un script)
+- (PENDIENTE) Poder correr un contenedor de Docker sin que devuelva errores.
+
+----
+
+Conclusiones
+------------
+
+- En determinadas circunstancias, cuando no se posee el suficiente poder de computo para correr la suite de aplicaciones que permitan analizar datos, la carga y descarga puede llevar un cantidad de tiempo considerable.
+
+Troubleshootings
+----------------
+
+- Si no se puede correr un contenedor:
+	* Crear uno nuevo con la misma imagen.
+	* Reiniciar la máquina.
+
+----------------------------------
+
 - Problema: ABM.
 
 Requisitos técnicos:
