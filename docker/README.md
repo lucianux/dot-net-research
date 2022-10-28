@@ -37,6 +37,9 @@ $ sudo docker container rm 9161
 *Revisando las imagenes*
 - sudo docker images -f reference=helloworld
 
+*Levantando la imagen recién creada*
+- sudo docker run helloworld:v1
+
 Links
 -----
 
