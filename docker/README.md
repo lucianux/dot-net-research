@@ -40,6 +40,9 @@ $ sudo docker container rm 9161
 *Levantando la imagen recién creada*
 - sudo docker run helloworld:v1
 
+*Revisando todos los contenedores:*
+- sudo docker ps -a
+
 Links
 -----
 
