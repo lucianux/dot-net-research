@@ -25,8 +25,16 @@ https://localhost:5001/swagger/index.html
 - Copiar el token y pegarlo cuando se hace click arriba en el botón Authorize (anteponiendo "Bearer ").
 - Listo, ahora se va a poder probar el endpoint /api/Authenticate/Get porque ya estamos autorizados.
 
+## Un poco más:
+
+Se puede revisar de qué se componen los tokens con esta herramienta: https://jwt.io/
+
 Links
 ----
 
 https://medium.com/nerd-for-tech/authentication-and-authorization-in-net-core-web-api-using-jwt-token-and-swagger-ui-cc8d05aef03c
 https://github.com/JayKrishnareddy/AuthenticationandAuthorization/tree/master/AuthenticationandAuthorization
+
+#### Qué es json web token y cómo funciona:
+
+https://www.youtube.com/watch?v=qXJ9jV-0wQ4
