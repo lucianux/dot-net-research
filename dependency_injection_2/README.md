@@ -18,6 +18,6 @@ http://localhost:5000/swagger/index.html
 Links
 ----
 
-https://www.youtube.com/watch?v=rAP0RWLmko4
+https://www.youtube.com/watch?v=rAP0RWLmko4 (fuente original del proyecto de ejemplo)
 
 https://learn.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-6.0
