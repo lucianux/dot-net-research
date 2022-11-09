@@ -11,6 +11,10 @@ dotnet build
 
 dotnet run -p ./webapi_di/webapi_di.csproj
 
+## Para probar con Swagger
+
+http://localhost:5000/swagger/index.html
+
 Links
 ----
 
