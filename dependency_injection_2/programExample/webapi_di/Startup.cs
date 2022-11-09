@@ -8,6 +8,8 @@ using webapi_di.Comandos;
 using webapi_di.Interfaces;
 using webapi_di.Logger;
 using webapi_di.Servicios;
+using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.OpenApi.Models;
 
 namespace webapi_di
 {
@@ -20,9 +22,31 @@ namespace webapi_di
 
         public IConfiguration Configuration { get; }
 
+        private void AddSwagger(IServiceCollection services)
+        {
+            services.AddSwaggerGen(options =>
+            {
+                var groupName = "v1";
+
+                options.SwaggerDoc(groupName, new OpenApiInfo
+                {
+                    Title = $"Foo {groupName}",
+                    Version = groupName,
+                    Description = "Foo API",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Foo Company",
+                        Email = string.Empty,
+                        Url = new Uri("https://foo.com/"),
+                    }
+                });
+            });
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            AddSwagger(services);
             services.AddControllers();
 
             services.AddSingleton<ISingletonService, SingletonService>();
@@ -55,6 +79,14 @@ namespace webapi_di
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            // Swagger Configuration in API
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API v1");
+                
             });
         }
     }

@@ -29,11 +29,13 @@ namespace webapi_di.Controllers
             _logger.Log("****** Instancia DIController ******");
         }
 
+        [HttpGet]
         public IActionResult DI()
         {
             return Ok("Prueba de Inyección de Dependencias");
         }
 
+        [HttpGet]
         [Route("singleton")]
         public IActionResult Singleton()
         {
@@ -45,6 +47,7 @@ namespace webapi_di.Controllers
             });
         }
 
+        [HttpGet]
         [Route("scope")]
         public IActionResult ScopeSrv()
         {
@@ -56,6 +59,7 @@ namespace webapi_di.Controllers
             });
         }
 
+        [HttpGet]
         [Route("transient")]
         public IActionResult TransientSrv()
         {
@@ -67,6 +71,7 @@ namespace webapi_di.Controllers
             });
         }
 
+        [HttpGet]
         [Route("comando")]
         public IActionResult ComandoScope()
         {
