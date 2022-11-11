@@ -46,6 +46,14 @@ $ sudo docker container rm 9161
 *Revisando todos los contenedores:*
 - sudo docker ps -a
 
+## Apendice A - Más comandos Docker que pueden servir
+
+*Borrando todos los contenedores
+- sudo docker rm $(sudo docker ps -aq)
+
+*Borrando todas las imagenes
+- sudo docker rmi $(sudo docker images -q)
+
 Links
 -----
 
