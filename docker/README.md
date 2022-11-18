@@ -55,6 +55,12 @@ $ sudo docker container rm 9161
 *Borrando todas las imagenes
 - sudo docker rmi $(sudo docker images -q)
 
+*Ver logs:
+- sudo docker logs {CONTAINER_ID}
+
+*Acceder al Filesystem de un contenedor:
+- sudo docker exec -t -i 897 /bin/bash
+
 Links
 -----
 
