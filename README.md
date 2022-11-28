@@ -89,6 +89,19 @@ So, abstract methods have no actual code in them, and subclasses HAVE TO overrid
 Fuente:
 https://stackoverflow.com/questions/14728761/difference-between-virtual-and-abstract-methods
 
+/********* WORKING ************/
+
+## Abstract class vs. Inteface
+
+El modificador "abstract" es una restricción a la clase para que no pueda instanciar objetos, para que pueda instanciar se debe usar otra clase que herede de esta clase abstracta.
+* Una clase abstracta puede tener métodos abstractos y no abstractos (con cuerpo).
+* Una clase abstracta no proporciona una abstracción total, pero una interfaz sí; es decir, tanto una declaración como una definición se dan en una clase abstracta pero no así en una interfaz.
+* Usando clases abstractas no podemos lograr herencia múltiple pero usando interfaces si se puede.
+* Una interface es una clase que sólo contiene propiedades y métodos abstractos (sin cuerpo).
+* Por defecto, los métodos de una interfase son abstratos y públicos. Por ésto no se puede usar ningún modificador de acceso (como public, private, protected, internal, etc.), keywords como static, virtual, abstract or sealed.
+
+/********* WORKING ************/
+
 -----
 
 # Comandos de consola
