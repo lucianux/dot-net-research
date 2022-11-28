@@ -100,6 +100,10 @@ El modificador "abstract" es una restricción a la clase para que no pueda insta
 * Una interface es una clase que sólo contiene propiedades y métodos abstractos (sin cuerpo).
 * Por defecto, los métodos de una interfase son abstratos y públicos. Por ésto no se puede usar ningún modificador de acceso (como public, private, protected, internal, etc.), keywords como static, virtual, abstract or sealed.
 
+Revisar:
+https://www.infoworld.com/article/2928719/when-to-use-an-abstract-class-vs-interface-in-csharp.html
+https://www.geeksforgeeks.org/difference-between-abstract-class-and-interface-in-c-sharp/
+
 /********* WORKING ************/
 
 -----
