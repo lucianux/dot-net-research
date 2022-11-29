@@ -94,8 +94,8 @@ https://stackoverflow.com/questions/14728761/difference-between-virtual-and-abst
 ## Abstract class vs. Inteface
 
 * Ambas no se pueden instanciar. Para que se pueda: se debe usar otra clase que herede o implemente.
-* Una clase abstracta puede tener métodos abstractos y no abstractos (con implementación). En otras palabras, las clases abstractas se implementan una parte o nada. En las interfaces, nada de implementaciones, es un contrato.
-* Una clase abstracta puede tener constructores.
+* Una clase abstracta puede tener métodos abstractos y no abstractos (con implementación). En otras palabras, las clases abstractas se pueden implementar completamente, una parte o nada. En las interfaces, nada de implementaciones, es un contrato.
+* Una clase abstracta puede tener constructores, una interfaz no.
 * Una clase abstracta no proporciona una abstracción total, pero una interfaz sí; es decir, tanto una declaración como una definición se dan en una clase abstracta pero no así en una interfaz.
 * Una interfaz no puede tener ningún dato miembro (member data). En cambio, una clase abstracta puede contener definiciones de métodos, campos y constructores, una interfaz solo puede tener declaraciones de eventos, métodos y propiedades.
 * Usando clases abstractas no podemos lograr herencia múltiple, pero si se puede usando interfaces. Dado que una clase puede implementar más de una interfaz, pero extender solo una clase.
