@@ -91,7 +91,7 @@ https://stackoverflow.com/questions/14728761/difference-between-virtual-and-abst
 
 /********* WORKING ************/
 
-## Abstract class vs. Inteface
+## Abstract class vs. Interface
 
 * Ambas no se pueden instanciar. Para que se pueda: se debe usar otra clase que herede o implemente.
 * Una clase abstracta puede tener métodos abstractos y no abstractos (con implementación). En otras palabras, las clases abstractas se pueden implementar completamente, una parte o nada. En las interfaces, nada de implementaciones, es un contrato.
