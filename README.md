@@ -93,12 +93,16 @@ https://stackoverflow.com/questions/14728761/difference-between-virtual-and-abst
 
 ## Abstract class vs. Inteface
 
-El modificador "abstract" es una restricción a la clase para que no pueda instanciar objetos, para que pueda instanciar se debe usar otra clase que herede de esta clase abstracta.
-* Una clase abstracta puede tener métodos abstractos y no abstractos (con cuerpo).
+* Ambas no se pueden instanciar. Para que se pueda: se debe usar otra clase que herede o implemente.
+* Una clase abstracta puede tener métodos abstractos y no abstractos (con implementación). En otras palabras, las clases abstractas se implementan una parte o nada. En las interfaces, nada de implementaciones, es un contrato.
+* Una clase abstracta puede tener constructores.
 * Una clase abstracta no proporciona una abstracción total, pero una interfaz sí; es decir, tanto una declaración como una definición se dan en una clase abstracta pero no así en una interfaz.
-* Usando clases abstractas no podemos lograr herencia múltiple pero usando interfaces si se puede.
+* Una interfaz no puede tener ningún dato miembro (member data). En cambio, una clase abstracta puede contener definiciones de métodos, campos y constructores, una interfaz solo puede tener declaraciones de eventos, métodos y propiedades.
+* Usando clases abstractas no podemos lograr herencia múltiple, pero si se puede usando interfaces. Dado que una clase puede implementar más de una interfaz, pero extender solo una clase.
 * Una interface es una clase que sólo contiene propiedades y métodos abstractos (sin cuerpo).
+* Absolutamente todos los métodos declarados en una interfaz deben ser implementados por las clases que implementan la interfaz, no así en las clases abstractas.
 * Por defecto, los métodos de una interfase son abstratos y públicos. Por ésto no se puede usar ningún modificador de acceso (como public, private, protected, internal, etc.), keywords como static, virtual, abstract or sealed.
+* En resumen, una clase abstracta le permite crear funcionalidades que las subclases pueden implementar o anular. Una interfaz solo le permite definir la funcionalidad, no implementarla.
 
 Revisar:
 https://www.infoworld.com/article/2928719/when-to-use-an-abstract-class-vs-interface-in-csharp.html
