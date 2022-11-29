@@ -89,26 +89,20 @@ So, abstract methods have no actual code in them, and subclasses HAVE TO overrid
 Fuente:
 https://stackoverflow.com/questions/14728761/difference-between-virtual-and-abstract-methods
 
-/********* WORKING ************/
-
 ## Abstract class vs. Interface
 
-* Ambas no se pueden instanciar. Para que se pueda: se debe usar otra clase que herede o implemente.
-* Una clase abstracta puede tener métodos abstractos y no abstractos (con implementación). En otras palabras, las clases abstractas se pueden implementar completamente, una parte o nada. En las interfaces, nada de implementaciones, es un contrato.
+* Ambas coinciden en que no se pueden instanciar. Para que sí se pueda: se debe usar otra clase que herede o implemente.
+* Una clase abstracta puede tener métodos abstractos (sin implementación) y no abstractos (con implementación). En otras palabras, las clases abstractas se pueden implementar completamente, una parte o nada. En cambio, en las interfaces, no se puede implementar nada, proporcionan una abstracción total, definen un contrato.
 * Una clase abstracta puede tener constructores, una interfaz no.
-* Una clase abstracta no proporciona una abstracción total, pero una interfaz sí; es decir, tanto una declaración como una definición se dan en una clase abstracta pero no así en una interfaz.
-* Una interfaz no puede tener ningún dato miembro (member data). En cambio, una clase abstracta puede contener definiciones de métodos, campos y constructores, una interfaz solo puede tener declaraciones de eventos, métodos y propiedades.
-* Usando clases abstractas no podemos lograr herencia múltiple, pero si se puede usando interfaces. Dado que una clase puede implementar más de una interfaz, pero extender solo una clase.
-* Una interface es una clase que sólo contiene propiedades y métodos abstractos (sin cuerpo).
 * Absolutamente todos los métodos declarados en una interfaz deben ser implementados por las clases que implementan la interfaz, no así en las clases abstractas.
+* Una interfaz no puede tener ningún dato miembro (member data). En cambio, una clase abstracta puede contener definiciones de métodos, campos y constructores, una interfaz solo puede tener declaraciones de eventos, métodos y propiedades.
+* Usando clases abstractas no podemos lograr herencia múltiple, pero si se puede usando interfaces. Dado que una clase puede implementar más de una interfaz, pero sólo extender una clase.
 * Por defecto, los métodos de una interfase son abstratos y públicos. Por ésto no se puede usar ningún modificador de acceso (como public, private, protected, internal, etc.), keywords como static, virtual, abstract or sealed.
-* En resumen, una clase abstracta le permite crear funcionalidades que las subclases pueden implementar o anular. Una interfaz solo le permite definir la funcionalidad, no implementarla.
+* En resumen, una clase abstracta le permite crear funcionalidades que las subclases pueden implementar o sobreescribir. Una interfaz solo le permite definir la funcionalidad como un contrato, pero no implementarla.
 
-Revisar:
-https://www.infoworld.com/article/2928719/when-to-use-an-abstract-class-vs-interface-in-csharp.html
-https://www.geeksforgeeks.org/difference-between-abstract-class-and-interface-in-c-sharp/
-
-/********* WORKING ************/
+Fuentes:
+* https://www.infoworld.com/article/2928719/when-to-use-an-abstract-class-vs-interface-in-csharp.html
+* https://www.geeksforgeeks.org/difference-between-abstract-class-and-interface-in-c-sharp/
 
 -----
 
