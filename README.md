@@ -19,13 +19,11 @@ https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/
 
 ## Solid
 
-- S: Single Responsibility Principle (SRP)
-- O: Open-Closed Principle (OCP)
-- L: Liskov Substitution Principle (LSP)
-- I: Interface Segregation Principle (ISP)
-- D: Dependency Inversion Principle (DIP)
-
-... INCOMPLETE ...
+- S: Single Responsibility Principle (SRP): define que cada modulo de software debe tener sólo una razón para cambiar. En otras palabras, cada clase debe tener sólo una responsabilidad.
+- O: Open-Closed Principle (OCP): las entidades de software deben ser abiertas para la extensión, pero cerradas para la modificación.
+- L: Liskov Substitution Principle (LSP): las clases derivadas deben ser sustituibles por sus clases base. Es decir, que un objeto puede ser reemplazado por un subobjeto (instancia de una subclase de la clase del primer objeto) sin romper el programa, sin dejar sus referencias inválidas.
+- I: Interface Segregation Principle (ISP): dice que se deben crear interfaces detalladas que sean específicas del cliente. En otras palabras, lo que dice este principio es que se deben dividir las interfaces que son muy grandes en otras más pequeñas y específicas para que los clientes solo tengan que conocer los métodos que les interesan.
+- D: Dependency Inversion Principle (DIP): el código debe depender de abstracciones, no de objetos concretos. Este principio establece dos puntos. Primero, los módulos de alto nivel no deberían importar nada de los módulos de bajo nivel. Ambos deben depender de abstracciones (por ejemplo, interfaces). Segundo, las abstracciones no deben depender de los detalles; sino que los detalles (implementaciones concretas) deberían depender de las abstracciones.
 
 ## Dependency Injection
 
