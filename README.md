@@ -111,9 +111,9 @@ Fuentes:
 
 ## Los 4 fundamentos de la programación orientada a objetos:
 
-Abstracción: este principio dice que la POO busca modelar los objetos, busca atraerse y simplificar un objeto de la vida real a solo un par de atributos. En otras palabras, buscaremos transformar un objeto de la vida real en atributos (características) y sus acciones (métodos). Consiste en encontrar las partes fundamentales de un sistema para describirlas de manera simple y precisa.
+**Abstracción**: este principio dice que la POO busca modelar los objetos, busca atraerse y simplificar un objeto de la vida real a solo un par de atributos. En otras palabras, buscaremos transformar un objeto de la vida real en atributos (características) y sus acciones (métodos). Consiste en encontrar las partes fundamentales de un sistema para describirlas de manera simple y precisa.
 
-Encapsulamiento: es la cualidad de los objetos de ocultar los detalles de implementación y su estado interno del mundo exterior
+**Encapsulamiento**: es la cualidad de los objetos de ocultar los detalles de implementación y su estado interno del mundo exterior
 Características:
 * Esconde detalles de implementación.
 * Protege el estado interno de los objetos.
@@ -121,13 +121,13 @@ Características:
 * Los métodos y su estado quedan escondidos para cualquier otro objeto. Es el objeto quien decide qué se publica.
 * Facilita modularidad y reutilización.
 
-Herencia: es el mecanismo por el cual las subclases reutilizan el comportamiento y estructura reunido en sus superclases. En otras palabras, permite que una clase pueda servir como plantilla para la creación de futuras clases.
+**Herencia**: es el mecanismo por el cual las subclases reutilizan el comportamiento y estructura reunido en sus superclases. En otras palabras, permite que una clase pueda servir como plantilla para la creación de futuras clases.
 La herencia permite:
 * Crear una nueva clase como refinamiento de otra.
 * Diseñar e implementar sólo la diferencia que presenta la nueva clase.
 * Abstraer las similitudes en común.
 
-Polimorfismo: un solo nombre de una clase o método puede representar diferentes implementaciones, pero solo una interfaz. Es decir, comportamientos diferentes, asociados a objetos distintos, pueden compartir el mismo nombre; al llamarlos por ese nombre se utilizará el comportamiento correspondiente al objeto que se esté usando. Dicho de otro modo, las referencias y las colecciones de objetos pueden contener objetos de diferentes tipos, y la invocación de un comportamiento en una referencia producirá el comportamiento correcto para el tipo real del objeto referenciado.
+**Polimorfismo**: un solo nombre de una clase o método puede representar diferentes implementaciones, pero solo una interfaz. Es decir, comportamientos diferentes, asociados a objetos distintos, pueden compartir el mismo nombre; al llamarlos por ese nombre se utilizará el comportamiento correspondiente al objeto que se esté usando. Dicho de otro modo, las referencias y las colecciones de objetos pueden contener objetos de diferentes tipos, y la invocación de un comportamiento en una referencia producirá el comportamiento correcto para el tipo real del objeto referenciado.
 
 ## Cohesión y acoplamiento
 
