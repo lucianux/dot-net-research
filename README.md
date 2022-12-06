@@ -15,6 +15,8 @@ https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/
 
 ## LINQ
 
+LINQ (Language Integrated Query) es un conjunto de extensiones integradas en el lenguaje C#, que nos permite trabajar de manera cómoda y rápida con colecciones de datos, como si de una base de datos se tratase. Es decir, podemos llevar a cabo inserciones, selecciones y borrados, así como operaciones sobre sus elementos.
+
 ... INCOMPLETE ...
 
 ## Solid
