@@ -129,6 +129,10 @@ La herencia permite:
 
 **Polimorfismo**: un solo nombre de una clase o método puede representar diferentes implementaciones, pero solo una interfaz. Es decir, comportamientos diferentes, asociados a objetos distintos, pueden compartir el mismo nombre; al llamarlos por ese nombre se utilizará el comportamiento correspondiente al objeto que se esté usando. Dicho de otro modo, las referencias y las colecciones de objetos pueden contener objetos de diferentes tipos, y la invocación de un comportamiento en una referencia producirá el comportamiento correcto para el tipo real del objeto referenciado.
 
+Fuente:
+
+https://medium.com/@cancerian0684/what-are-four-basic-principles-of-object-oriented-programming-645af8b43727
+
 ## Cohesión y acoplamiento
 
 -----
