@@ -183,6 +183,31 @@ code .
 ### No olvidar de agregar el .gitignore en la raíz (donde está la solución) con este contenido:
 [https://github.com/github/gitignore/blob/main/VisualStudio.gitignore](https://github.com/github/gitignore/blob/main/VisualStudio.gitignore)
 
+## Ejemplo de la creación de un proyecto de Testing
+
+### Crear un proyecto de pruebas:
+dotnet new xunit -o exampleTestProject
+
+### Para ejecutar el proyecto de pruebas:
+dotnet test ./exampleTestProject/exampleTestProject.csproj
+
+*/exampleTestProject/UnitTest1.cs*
+...
+using System;
+using Xunit;
+namespace exampleTestProject
+{
+  public class UnitTest1
+  {
+    [Fact]
+    public void Test1()
+    {
+      Assert.True(true);
+    }
+  }
+}
+...
+
 -----
 
 ## Comandos útiles en .NET Core
