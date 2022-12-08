@@ -135,6 +135,8 @@ https://medium.com/@cancerian0684/what-are-four-basic-principles-of-object-orien
 
 ## Cohesión y acoplamiento
 
+... INCOMPLETE ...
+
 -----
 
 # Comandos de consola
