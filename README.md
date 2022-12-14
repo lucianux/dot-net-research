@@ -141,6 +141,12 @@ https://medium.com/@cancerian0684/what-are-four-basic-principles-of-object-orien
 
 ... INCOMPLETE ...
 
+Fuentes:
+
+- https://si.ua.es/es/documentacion/asp-net-mvc-3/1-dia/modelo-vista-controlador-mvc.html
+- https://developer.mozilla.org/es/docs/Glossary/MVC
+- https://desarrolloweb.com/articulos/que-es-mvc.html
+
 -----
 
 # Comandos de consola
