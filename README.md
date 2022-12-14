@@ -137,6 +137,10 @@ https://medium.com/@cancerian0684/what-are-four-basic-principles-of-object-orien
 
 ... INCOMPLETE ...
 
+## MVC
+
+... INCOMPLETE ...
+
 -----
 
 # Comandos de consola
