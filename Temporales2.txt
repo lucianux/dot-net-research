@@ -1,0 +1,50 @@
+# StarMe UP
+Este proyecto corresponde a un clon de StarMeUp.
+
+----
+
+## Tools
+* Rancher Desktop (https://rancherdesktop.io/) para poder levantar los contenedores.
+
+----
+
+## Para levantar la aplicación, ejecutar:
+docker compose up --build -d
+
+## Para bajar todo, ejecutar:
+docker compose down
+
+## Para conectarse a la DB por SSMS, se debe conectar con estos parámetros:
+Servidor: 127.0.0.1,1433
+User: sa
+Pass: P4ssW0rd!
+
+## Para acceder a la aplicación:
+http://localhost/
+
+## Para acceder a swagger:
+http://localhost/swagger/index.html
+
+## Usuario de la aplicación
+* User: admin
+* Pass: admin
+
+## Para ver los logs de un contenedor específico:
+docker logs {CONTAINER_ID}
+
+----
+
+## Para levantar la aplicación conectándose a la DB dentro de un contenedor:
+* Usar el connection string para AppSettings.json: "Server=127.0.0.1,1433;Database=Database;User Id=sa;Password=P4ssW0rd!;TrustServerCertificate=true;"
+* Dentro de la carpeta Frontend, ejecutar: npm i
+* Dentro de la carpeta Web, ejecutar: dotnet run
+* La app está en: https://localhost:8090/
+* El swagger está en: https://localhost:8090/swagger/index.html
+
+----
+
+## Para agregar nuevos cambios en el modelo de DB:
+* Para correr la migration en la consola del Package Manager Console
+Add-Migration StarModel
+ 
+----
