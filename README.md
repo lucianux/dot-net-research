@@ -201,7 +201,14 @@ https://medium.com/@cancerian0684/what-are-four-basic-principles-of-object-orien
 
 ## Cohesión y acoplamiento
 
-... INCOMPLETE ...
+La cohesión es el efecto de reunirse o adherise las cosas entre sí o la materia de la que está formada. Algo está cohesionado si tiene sentido, y una dirección común. Algo tiene alta cohesión si tiene un alcance definido, unos límites claros y un contenido delimitado y perfectamente ubicado.
+
+El acoplamiento es el grado en que los módulos de un programa dependen unos de otros. Si para hacer cambios en un módulo del programa es necesario hacer cambios en otro módulo distinto, existe acoplamiento entre ambos módulos.
+
+Lo ideal es tener bajo acoplamiento y alta cohesión.
+
+Fuente:
+- https://www.disrupciontecnologica.com/acoplamiento-y-cohesion/
 
 ## MVC
 
