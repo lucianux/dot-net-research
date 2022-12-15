@@ -17,9 +17,73 @@ Fuente:
 
 ## LINQ
 
-LINQ (Language Integrated Query) es un conjunto de extensiones integradas en el lenguaje C#, que nos permite trabajar de manera cómoda y rápida con colecciones de datos, como si de una base de datos se tratase. Es decir, podemos llevar a cabo inserciones, selecciones y borrados, así como operaciones sobre sus elementos.
+LINQ (Language Integrated Query) es un conjunto de extensiones integradas en el lenguaje C#, que nos permite trabajar de manera cómoda y rápida con colecciones de datos (objetos, xmls, bases de datos, JSON, CSVs, etc.). Es decir, podemos llevar a cabo inserciones, selecciones y borrados, así como operaciones sobre sus elementos.
 
-... INCOMPLETE ...
+Filtering:
+var col2 = Orders.Where(o => o.CustomerID == 84);
+
+Return Anonymous Type:
+var col2 = orders.Select(o => new
+{
+  OrderID = o.OrderID,
+  Cost = o.Cost
+});
+
+Ordering:
+- var col2 = orders.OrderBy(o => o.Cost);
+- var col4 = orders.OrderByDescending(o => o.Cost);
+- var col6 = orders.OrderBy(o => o.CustomerID).
+  ThenByDescending(o => o.Cost);
+
+Joining:
+var col2 = customers.Join(orders,
+  c => c.CustomerID,o => o.CustomerID,
+  (c, o) => new
+  {
+    c.CustomerID,
+    c.Name,
+    o.OrderID,
+    o.Cost
+  }
+);
+
+Grouping:
+var OrderCounts1 = orders.GroupBy(
+  o => o.CustomerID).
+  Select(g => new
+  {
+  CustomerID = g.Key,
+  TotalOrders = g.Count()
+});
+
+Paging (using Skip & Take):
+//select top 3
+var col2 = orders.Where(
+o => o.CustomerID == 84
+).Take(3);
+
+//skip first 2 and return the 2 after
+var col3 = (from o in orders
+where o.CustomerID == 84
+orderby o.Cost
+select o).Skip(2).Take(2);
+
+Conversions:
+- ToArray
+string[] names = (from c in customers
+select c.Name).ToArray();
+- ToDictionary
+Dictionary<int, Customer> col = customers.ToDictionary(c => c.CustomerID);
+- ToList
+List<Order> ordersOver10 = (from o in orders
+where o.Cost > 10
+orderby o.Cost).ToList();
+- ToLookup
+ILookup<int, string> customerLookup =
+customers.ToLookup(c => c.CustomerID, c => c.Name);
+
+Fuente:
+- https://vslapp.files.wordpress.com/2011/11/linq-cheatsheet.pdf
 
 ## Solid
 
