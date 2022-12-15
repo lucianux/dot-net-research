@@ -6,12 +6,14 @@ Async: se aplica a la declaración de un método. Lo que indica es que un métod
 
 Await: esta palabre clave permite que un método que ha llamado a otro método asíncrono espere a que dicho método asíncrono termine. No usamos await ni bien cuando llamamos al método asíncrono, lo hacemos más tarde cuando esperamos a que dicho método termine (y recoger el resultado).
 Sobre un objeto "awaitable", es sobre el que llamaremos a await para esperarnos a que el método asíncrono finalice y a la vez obtener el resultado. Un objeto awaitable es conocido de la TPL (Task Parallel Library) que viene con .NET 4: es un objeto Task o su equivalente genérico Task<T>.
+
 Fuente:
-https://geeks.ms/etomas/2011/09/17/c-5-async-await/
+- https://geeks.ms/etomas/2011/09/17/c-5-async-await/
 
 The await keyword provides a non-blocking way to start a task, then continue execution when that task completes.
+
 Fuente:
-https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/#dont-block-await-instead
+- https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/#dont-block-await-instead
 
 ## LINQ
 
