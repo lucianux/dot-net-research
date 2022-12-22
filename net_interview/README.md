@@ -28,6 +28,6 @@ Unboxing
 
 Fuentes:
 
-https://www.edureka.co/blog/interview-questions/dot-net-interview-questions/
-
+- https://www.edureka.co/blog/interview-questions/dot-net-interview-questions/
+- https://www.interviewbit.com/dot-net-interview-questions/
 
