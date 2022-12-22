@@ -85,7 +85,7 @@ customers.ToLookup(c => c.CustomerID, c => c.Name);
 Fuente:
 - https://vslapp.files.wordpress.com/2011/11/linq-cheatsheet.pdf
 
-## Solid
+## SOLID
 
 - S: Single Responsibility Principle (SRP): define que cada modulo de software debe tener sólo una razón para cambiar. En otras palabras, cada clase debe tener sólo una responsabilidad.
 - O: Open-Closed Principle (OCP): las entidades de software deben ser abiertas para la extensión, pero cerradas para la modificación.
