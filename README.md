@@ -17,7 +17,7 @@ Fuente:
 
 ## LINQ
 
-LINQ (Language Integrated Query) es un conjunto de extensiones integradas en el lenguaje C#, que nos permite trabajar de manera cómoda y rápida con colecciones de datos (objetos, xmls, bases de datos, JSON, CSVs, etc.). Es decir, podemos llevar a cabo inserciones, selecciones y borrados, así como operaciones sobre sus elementos.
+LINQ (Language Integrated Query) es un conjunto de extensiones integradas en el lenguaje C#, que nos permite trabajar de manera cómoda y rápida con colecciones de datos (objetos, xml, bases de datos, JSON, CSVs, etc.). Es decir, podemos llevar a cabo inserciones, selecciones y borrados, así como operaciones sobre sus elementos.
 
 Filtering:
 var col2 = Orders.Where(o => o.CustomerID == 84);
