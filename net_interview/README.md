@@ -4,7 +4,7 @@
 
 The .NET framework supports an object-oriented approach that is used for building applications on windows. It supports various languages like C#, VB, Cobol, Perl, .NET, etc. It has a wide variety of tools and functionalities like class, library and APIs that are used to build, deploy and run web services and different applications.
 
-### What are the different components of .NET?**
+## What are the different components of .NET?**
 
 Following are the components of .NET:
 * Common Language run-time
@@ -14,7 +14,7 @@ Following are the components of .NET:
 * .NET Framework
 * Profiling
 
-**What do you know about boxing and unboxing?**
+## What do you know about boxing and unboxing?**
 
 Boxing
 * Implicit
