@@ -212,7 +212,10 @@ Fuente:
 
 ## MVC
 
-... INCOMPLETE ...
+MVC es una propuesta de arquitectura del software que enfatiza una separación entre la lógica de negocios y su visualización. Esta "separación de preocupaciones" proporciona una mejor división del trabajo (en capas) por sus distintas responsabilidades, de esta manera mejora el mantenimiento. Su fundamento es la separación del código en tres capas diferentes, acotadas por su responsabilidad, en lo que se llaman Modelos, Vistas y Controladores:
+- Modelo: Maneja datos, lógica de negocios y reglas de la aplicación. Recibe la entrada del usuario del controlador.
+- Vista: Se encarga del diseño y presentación del modelo en un formato particular.
+- Controlador: enruta comandos a los modelos y vistas. Su responsabilidad no es manipular directamente datos, ni mostrar ningún tipo de salida, sino servir de enlace entre los modelos y las vistas. Recibe los datos de entrada, opcionalmente los valida (incluso puede hacer una conversión de formato de datos) y luego pasa estos datos al modelo.
 
 Fuentes:
 
