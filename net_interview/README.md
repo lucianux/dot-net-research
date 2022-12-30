@@ -26,6 +26,44 @@ Unboxing
 * Extracting the value type from the object
 * eg : i = (int)myObject;
 
+## What is the difference between managed and unmanaged code?
+
+Managed code
+* Managed code is managed by CLR
+* .NET framework is necessary to execute managed code
+* CLR manages memory management through garbage collection
+
+Unmanaged code
+* Any code that is not managed by CLR
+* Independent of .NET framework
+* Own runtime environment for compilation and execution
+
+## Explain the difference between a class and an object?
+
+Class
+* Class is the definition of an object
+* It is a template of the object
+* It describes all the methods, properties, etc
+
+Object
+* An object is an instance of a class.
+* A class does not become an object unless instantiated
+* An object is used to access all those properties from the class.
+
+## Differentiate between constants and read-only variables.
+
+Constants
+* Evaluated at compile time
+* Support only value type variables
+* They are used when the value is not changing at compile time
+* Cannot be initialized at the time of declaration or in a constructor
+
+Read-only Variables
+* Evaluated at run-time
+* They can hold the reference type variables
+* Used when the actual value is unknown before the run-time
+* Can be initialized at the time of declaration or in a constructor
+
 Fuentes:
 
 - https://www.edureka.co/blog/interview-questions/dot-net-interview-questions/
