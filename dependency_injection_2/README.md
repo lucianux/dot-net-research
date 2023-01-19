@@ -72,3 +72,4 @@ Los ciclos de vida se pueden observar en los siguientes estados:
 
 - https://dotnettutorials.net/lesson/dependency-injection-design-pattern-csharp/ // Se menciona la DI por method y property
 
+- https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection#service-lifetimes // Explica el tiempo de vida de los servicios
