@@ -20,7 +20,9 @@ Tradicionalmente el programador especificaba la secuencia de decisiones y proced
 Esta nueva filosofía es muy útil cuando se usan frameworks de desarrollo. Es el framework el que toma el control, el que define el flujo de actuación o el ciclo de vida de una petición. Es decir, es el framework quien ejecuta el código de usuario.
 La inversión de control es un término genérico que puede implementarse de diferentes maneras. Por ejemplo se puede implementar mediante eventos o mediante Inyección de Dependencias (DI).
 Se puede ver en este gráfico distintas implementaciones de IoC:
-![Implementaciones de IoC](https://raw.githubusercontent.com/lucianux/dot-net-research/main/dependency_injection_2/Assets/KindsOfIoC.jpg)
+<p align="center">
+  <img src="/main/dependency_injection_2/Assets/KindsOfIoC.jpg" alt="Implementaciones de IoC"/>
+</p>
 
 ## En ASP.NET Core
 
