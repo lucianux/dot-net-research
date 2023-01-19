@@ -21,7 +21,7 @@ Esta nueva filosofía es muy útil cuando se usan frameworks de desarrollo. Es e
 La inversión de control es un término genérico que puede implementarse de diferentes maneras. Por ejemplo se puede implementar mediante eventos o mediante Inyección de Dependencias (DI).
 Se puede ver en este gráfico distintas implementaciones de IoC:
 <p align="center">
-  <img src="/main/dependency_injection_2/Assets/KindsOfIoC.jpg" alt="Implementaciones de IoC"/>
+  <img src="/dependency_injection_2/Assets/KindsOfIoC.jpg" alt="Implementaciones de IoC"/>
 </p>
 
 ## En ASP.NET Core
