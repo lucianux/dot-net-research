@@ -234,12 +234,17 @@ Armar los proyectos, compilar, configurar el debugging.
 ## Creando un Proyecto .NET
 
 ### Crear la solución (crea una carpeta con el archivo .sln)
+
 dotnet new sln -o PaymentFacilities
 
 ### Crear los proyectos (más info con dotnet new -l)
+
 dotnet new webapi -o PaymentFacilities.WebApi
+
 dotnet new classlib -o PaymentFacilities.Core
+
 dotnet new classlib -o PaymentFacilities.SharedKernel
+
 dotnet new classlib -o PaymentFacilities.Infraestructure
 
 ### Agregar un proyecto a la solución
