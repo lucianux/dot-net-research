@@ -343,7 +343,8 @@ dotnet new xunit -o exampleTestProject
 dotnet test ./exampleTestProject/exampleTestProject.csproj
 
 */exampleTestProject/UnitTest1.cs*
-...
+
+```
 using System;
 using Xunit;
 namespace exampleTestProject
@@ -357,7 +358,7 @@ namespace exampleTestProject
     }
   }
 }
-...
+```
 
 -----
 
