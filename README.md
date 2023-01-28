@@ -248,32 +248,51 @@ dotnet new classlib -o PaymentFacilities.SharedKernel
 dotnet new classlib -o PaymentFacilities.Infraestructure
 
 ### Agregar un proyecto a la solución
+
 dotnet sln PaymentFacilities.sln add ./PaymentFacilities.WebApi/PaymentFacilities.WebApi.csproj
+
 dotnet sln PaymentFacilities.sln add ./PaymentFacilities.Core/PaymentFacilities.Core.csproj
+
 dotnet sln PaymentFacilities.sln add ./PaymentFacilities.SharedKernel/PaymentFacilities.SharedKernel.csproj
+
 dotnet sln PaymentFacilities.sln add ./PaymentFacilities.Infraestructure/PaymentFacilities.Infraestructure.csproj
 
 ### Agregar referencias
+
 dotnet add ./PaymentFacilities.Core/PaymentFacilities.Core.csproj reference ./PaymentFacilities.SharedKernel/PaymentFacilities.SharedKernel.csproj
+
 dotnet add ./PaymentFacilities.WebApi/PaymentFacilities.WebApi.csproj reference ./PaymentFacilities.SharedKernel/PaymentFacilities.SharedKernel.csproj
+
 dotnet add ./PaymentFacilities.WebApi/PaymentFacilities.WebApi.csproj reference ./PaymentFacilities.Infraestructure/PaymentFacilities.Infraestructure.csproj
+
 dotnet add ./PaymentFacilities.WebApi/PaymentFacilities.WebApi.csproj reference ./PaymentFacilities.Core/PaymentFacilities.Core.csproj
+
 dotnet add ./PaymentFacilities.Infraestructure/PaymentFacilities.Infraestructure.csproj reference ./PaymentFacilities.SharedKernel/PaymentFacilities.SharedKernel.csproj
+
 dotnet add ./PaymentFacilities.Infraestructure/PaymentFacilities.Infraestructure.csproj reference ./PaymentFacilities.Core/PaymentFacilities.Core.csproj
 
 ### Agregar librerías
+
 dotnet add ./PaymentFacilities.Infraestructure/PaymentFacilities.Infraestructure.csproj package Autofac --version 5.2.0
+
 dotnet add ./PaymentFacilities.WebApi/PaymentFacilities.WebApi.csproj package Autofac.Extensions.DependencyInjection --version 6.0.0
+
 dotnet add ./PaymentFacilities.Infraestructure/PaymentFacilities.Infraestructure.csproj package MediatR
+
 dotnet add ./PaymentFacilities.SharedKernel/PaymentFacilities.SharedKernel.csproj package MongoDB.Driver --version 2.11
+
 dotnet add ./PaymentFacilities.Infraestructure/PaymentFacilities.Infraestructure.csproj package Autofac.Extensions.DependencyInjection --version="6.0.0"
 
 ### Correr
+
 dotnet run -p ./PaymentFacilities.WebApi/PaymentFacilities.WebApi.csproj
 
 ### Pruebas
+
 http://localhost:5000/api/WeatherForecast
+
 http://localhost:5000/api/PaymentFacilities
+
 http://localhost:3000/api/PaymentFacilities/getPaymentFacility/1
 
 Fuente:
@@ -285,21 +304,27 @@ https://stackoverflow.com/questions/36343223/create-c-sharp-sln-file-with-visual
 ## Ejemplo de la creación de un proyecto simple de consola
 
 ### Crear una solución (dentro del mismo directorio)
+
 dotnet new sln -n exampleSolution
 
 ### Crear un nuevo proyecto de consola
+
 dotnet new console -o exampleConsole
 
 ### Asociar el proyecto a la solución
+
 dotnet sln exampleSolution.sln add ./exampleConsole/exampleConsole.csproj
 
 ### Correr mi aplicación:
+
 dotnet run -p ./exampleConsole/exampleConsole.csproj
 
 ### Compilar la aplicación
+
 dotnet build
 
 ### Abrir el proyecto con VS Code (ubicado en la raíz): 
+
 code .
 
 ### Otra forma de abrir una solución de .NET Core en VS Code: abrir la carpeta raíz (la que contiene el .sln) y ahí escanea todos los archivos.
@@ -310,9 +335,11 @@ code .
 ## Ejemplo de la creación de un proyecto de Testing
 
 ### Crear un proyecto de pruebas:
+
 dotnet new xunit -o exampleTestProject
 
 ### Para ejecutar el proyecto de pruebas:
+
 dotnet test ./exampleTestProject/exampleTestProject.csproj
 
 */exampleTestProject/UnitTest1.cs*
@@ -337,25 +364,33 @@ namespace exampleTestProject
 ## Comandos útiles en .NET Core
 
 ### Run
+
 dotnet run
+
 dotnet run -p ./PaymentFacilities.WebApi/PaymentFacilities.WebApi.csproj
 
 ### Build
+
 dotnet build
 
 ### Clean
+
 dotnet clean
 
 ### Test
+
 dotnet test
 
 ### Restore
+
 dotnet restore
 
 ### Show installed packages
+
 dotnet list [filename].sln package
 
 ### Publish a release
+
 dotnet publish -c Release
 
 -----
@@ -371,29 +406,39 @@ dotnet publish -c Release
 ## Instalando .NET 5.0 (= Core 4.0) en Linux
 
 ### Primero, bajar:
+
 wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+
 sudo dpkg -i packages-microsoft-prod.deb
 
 ### Segundo, instalar:
+
 sudo apt-get update; \
   sudo apt-get install -y apt-transport-https && \
   sudo apt-get update && \
   sudo apt-get install -y dotnet-sdk-5.0
 
 ### Tercero, check:
+
 dotnet --list-sdks
+
 dotnet --list-runtimes
+
 dotnet --info
 
 ### Opcional
+
 sudo apt-get install -y dotnet-sdk-3.1
 
 Fuentes:
 
 https://docs.microsoft.com/en-us/dotnet/core/install/how-to-detect-installed-versions?pivots=os-linux
+
 https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004-
 
 TargetFrameworks en .csproj:
 
 https://docs.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props#targetframeworks
+
 https://docs.microsoft.com/en-us/dotnet/standard/frameworks
+
