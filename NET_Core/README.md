@@ -4,6 +4,21 @@ En esta sección se presentan las diferencias entre .NET Framework vs .NET Core,
 
 ## Estructura de un proyecto en ASP.NET Core 2
 
+- Archivo .csproj: se usa este archivo para manejar proyectos. Algunos de los settings incluídos en este archivo: versión target del .NET Framework, carpetas del proyecto, referencias a los paquetes NuGets, entre otros.
+- Dependencies: contiene todos los paquetes NuGet instalados o que se necesitan obtener para que funcione la aplicación. Algunos de los comandos para manejar las dependencias son:
+  - Agregar una dependencia:
+```
+dotnet add package Microsoft.EntityFrameworkCore
+```
+  - Eliminar una dependencia:
+```
+dotnet remove package Microsoft.EntityFrameworkCore
+```
+  - Listar referencias a paquetes (dependencias):
+```
+dotnet list [filename].csproj package
+```
+
 [...INCOMPLETE...]
 
 ## Diferencias con .NET Framework
