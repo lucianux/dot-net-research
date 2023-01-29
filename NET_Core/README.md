@@ -6,10 +6,11 @@ En esta sección se presentan las diferencias entre .NET Framework vs .NET Core,
 
 ### Archivo .csproj
 
-Este archivo para manejar proyectos. Algunos de los settings incluídos en este archivo: versión target del .NET Framework, carpetas del proyecto, referencias a los paquetes NuGets, entre otros.
+Este archivo sirve para gestionar un proyecto. Éstos son algunos de los settings incluídos en este archivo: versión target del .NET Framework, carpetas del proyecto, referencias a los paquetes NuGets, entre otros.
 
 ### Dependencies
-Contiene todos los paquetes NuGet instalados o que se necesitan obtener para que funcione la aplicación. Algunos de los comandos para manejar las dependencias son:
+
+Contiene todos los paquetes NuGet instalados o aquellos que se necesitan obtener para que funcione la aplicación. Algunos de los comandos para manejar las dependencias son:
 
 Agregar una dependencia:
 ```
@@ -30,26 +31,26 @@ En esta carpeta se encuentra el archivo launchSettings.json que contiene setting
 
 ### wwwroot
 
-Es una carpeta pública y visible al usuario, acá pueden ir los archivos estáticos (o en una subcarpeta, generalmente se crean carpetas con los nombres "css", "html" y "js"). Para servir archivos estáticos se debe configurar el middleware e instalar "Microsoft.AspNetCore.StaticFiles".
+Es una carpeta pública y visible al usuario, en donde pueden ir los archivos estáticos (o en una subcarpeta, generalmente se crean carpetas con los nombres "css", "html" y "js"). Para alojar archivos estáticos se debe configurar el middleware e instalar el paquete "Microsoft.AspNetCore.StaticFiles".
 
 ### Program.cs
 
-Es un archivo ubicado en la raíz del proyecto. Es la entrada a la aplicación en donde se crea el host para la aplicación web. Cuando se crear el proyecto por consola, se autogenera por el template (webapp o mvc) que se aplica. Por defecto, el método CreateDefaultBuilder, internamente configura Kestrel (un web server para ASP.NET Core multiplataforma y open-source), la integración con IIS, el directorio raíz y otras configuraciones. También, se encuentran invocaciones a ConfigureAppConfiguration que carga configuraciones de archivos appsettings.json, variables de ambiente y "user secrets", y finalmente, se encuentra la invocación a ConfigureLogging que es el setup de logging para la consola y la ventana "debug".
+Es un archivo que está ubicado en la raíz del proyecto. Funciona como una entrada a la aplicación, en donde se crea el host para la aplicación web. Por defecto, el método CreateDefaultBuilder, internamente configura Kestrel (un web server para ASP.NET Core multiplataforma y open-source), la integración con IIS, el directorio raíz y otras configuraciones. También, se encuentran invocaciones a ConfigureAppConfiguration que carga configuraciones de archivos appsettings.json, variables de ambiente y "user secrets", y finalmente, se encuentra la invocación a ConfigureLogging que es el setup de logging para la consola y la ventana "debug".
+
+[...AGREGAR MÁS INFO, EN LO POSIBLE ...]
 
 ### Startup.cs
 
-Es un archivo ubicado en la raíz del proyecto que se asemeja al archivo global.asax, se ejecuta ni bien arranca la aplicación. Se configura en el program.cs, con la invocación al método UseStartup(). La clase Startup contiene dos métodos importantes: ConfigureServices y Configure.
+Es un archivo ubicado en la raíz del proyecto que se asemeja al archivo global.asax, dado que se ejecuta ni bien arranca la aplicación. Se configura en el program.cs, con la invocación al método UseStartup(). La clase Startup contiene dos métodos importantes: ConfigureServices y Configure, que a continuación se explicarán.
 
-### ConfigureServices
+#### ConfigureServices
 
 En este método se agregan los servicios al contenedor de IoC y todo el tema de la Inyección por Dependencias. Después de registrar la clase, se puede usar en cualquier lugar de la aplicación.
 
-### Configure
+#### Configure
 
 En este método se puede configurar el Middleware (HTTP request pipeline) para que se pueda ejecutar en cada request.
 El método ConfigureServices se llama antes que el método Configure, de modo que los servicios registrados en el contenedor de IoC se pueden usar en el método Configure.
-
-[...INCOMPLETE ...]
 
 ## Diferencias con .NET Framework
 
@@ -66,3 +67,4 @@ https://www.tutorialsteacher.com/core/aspnet-core-application-project-structure
 
 https://learn.microsoft.com/en-us/aspnet/core/migration/proper-to-2x/?view=aspnetcore-7.0
 
+https://www.integrativesystems.com/features-of-dot-net-core/
