@@ -6,6 +6,13 @@ En esta sección se presentan las diferencias entre .NET Framework vs .NET Core,
 
 [...INCOMPLETE...]
 
+## Diferencias con .NET Framework
+
+- Carga del archivo de configuración
+- Native dependency injection
+- Guardado de archivos estáticos.
+- Se reemplaza Global.asax por Program.cs: ahí se setea la clase Startup.cs, la cual tiene los métodos Configure y ConfigureServices.
+
 Fuentes:
 
 https://www.youtube.com/watch?v=4FrKuVvISVQ -- ASP.NET Core 2
