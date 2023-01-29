@@ -1,5 +1,7 @@
 # Dot Net Core
 
+En esta sección se presentan las diferencias entre .NET Framework vs .NET Core, y por otro lado, se explican las características de ASP.NET Core.
+
 ## Estructura de un proyecto en ASP.NET Core 2
 
 [...INCOMPLETE...]
