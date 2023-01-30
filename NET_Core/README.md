@@ -43,14 +43,21 @@ Es un archivo que está ubicado en la raíz del proyecto. Funciona como una entr
 
 Es un archivo ubicado en la raíz del proyecto que se asemeja al archivo global.asax, dado que se ejecuta ni bien arranca la aplicación. Se configura en el program.cs, con la invocación al método UseStartup(). La clase Startup contiene dos métodos importantes: ConfigureServices y Configure, que a continuación se explicarán.
 
-#### ConfigureServices
+#### ConfigureServices (en Startup.cs)
 
-En este método se agregan los servicios al contenedor de IoC y todo el tema de la Inyección por Dependencias. Después de registrar la clase, se puede usar en cualquier lugar de la aplicación.
+En este método se registran las clases dependientes en el contenedor IoC incorporado. Una vez registradas las clases, pueden ser usadas en cualquier lugar de la aplicación. En este método se incluye el parámetro IServiceCollection para registrar los servicios al contenedor IoC.
 
-#### Configure
+#### Configure (en Startup.cs)
 
-En este método se puede configurar el Middleware (HTTP request pipeline) para que se pueda ejecutar en cada request.
-El método ConfigureServices se llama antes que el método Configure, de modo que los servicios registrados en el contenedor de IoC se pueden usar en el método Configure.
+ASP.NET Core introdujo los componentes de MIDDLEWARE para definir un request pipeline, el cual será ejecutado en cada request. Entonces, es en este método (Configure()) que se configura el MIDDLEWARE (HTTP request pipeline) para que se pueda ejecutar en cada request. Se lo hace usando una instancia de IApplicationBuilder que provee el contenedor IoC incorporado. En la versión por defecto, se puede ver algunos componentes middleware registrados como: UseDeveloperExceptionPage, UseSwagger, UseSwaggerUI, UseHttpsRedirection, UseRouting, UseAuthorization y UseEndpoints. Un dato no menor es que el método ConfigureServices se llama antes que el método Configure, de modo que los servicios registrados en el contenedor de IoC se puedan usar en el método Configure.
+
+### appsettings.json
+
+Este archivo es el mismo que web.config o app.config de las tradicionales aplicaciones .NET, es decir, es el archivo de configuración de la aplicación web en ASP.NET Core, usado para guardar settings como connections strings, parámetros de la aplicación, etc.
+
+## appsettings.Development.json
+
+En caso de que se quiera configurar algunos parámetros basados en el ambiente entonces se lo puede hacer en el archivo appsettings.{Environment}.json, donde se puede crear n número de ambientes como development, staging, production, etc.
 
 ## Diferencias con .NET Framework
 
@@ -68,3 +75,6 @@ https://www.tutorialsteacher.com/core/aspnet-core-application-project-structure
 https://learn.microsoft.com/en-us/aspnet/core/migration/proper-to-2x/?view=aspnetcore-7.0
 
 https://www.integrativesystems.com/features-of-dot-net-core/
+
+https://dotnettutorials.net/lesson/asp-net-core-web-api-files-and-folders/
+
