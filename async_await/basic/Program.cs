@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace exampleAsyncAwait
+namespace basic
 {
     class Program
     {
