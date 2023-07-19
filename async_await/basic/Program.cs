@@ -4,18 +4,22 @@ using System.Threading.Tasks;
 
 namespace basic
 {
-    class Program
+    public class Program
     {
-        static async Task Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            Thread.Sleep(1000);
-            Console.WriteLine("The Beginning");
-            Task TLongProcess = Robot.LongProcessAsync();
+            Console.WriteLine("In this example, the mechanism \"Async/Await\" is shown");
+            Console.WriteLine("Press any key to begin...");
+            Console.ReadKey();
 
-            Robot.ShortProcess();
-            await TLongProcess;
+            Task longProcessTask = Robot.LongProcessAsync();
+            Task shortProcessTask = Robot.ShortProcess();
+            
+            await longProcessTask;
+            await shortProcessTask;
 
-            Console.WriteLine("The End");
+            Console.WriteLine("Press any key to finish...");
+            Console.ReadKey();
         }
     }
 
@@ -28,10 +32,10 @@ namespace basic
             Console.WriteLine("LongProcess - It has finished");
         }
 
-        public static void ShortProcess()
+        public static async Task ShortProcess()
         {
             Console.WriteLine("ShortProcess - It has started");
-            Thread.Sleep(1000);
+            await Task.Delay(1000);
             Console.WriteLine("ShortProcess - It has finished");
         }
     }
