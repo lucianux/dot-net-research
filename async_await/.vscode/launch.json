@@ -9,9 +9,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/exampleAsyncAwait/bin/Debug/netcoreapp3.1/exampleAsyncAwait.dll",
+            "program": "${workspaceFolder}/basic/bin/Debug/net7.0/basic.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/exampleAsyncAwait",
+            "cwd": "${workspaceFolder}/basic",
             "console": "internalConsole",
             "stopAtEntry": false
         },
