@@ -116,7 +116,7 @@ Ejemplo compacto:
 </div>
 ```
 
-## JSX - Renderizando 1istas
+## JSX - Renderizando listas
 Se pueden procesar arrays para formar expresiones HTML para renderizar, para ello se puede utilizar la prop "Key" para especificar una clave única para cada elemento. Esta Key se usa para identificar qué elemento actualizar cuando se quiera actualizar un elemento específico. Por ejemplo, si tenemos este array:
 ```
 const products = [
@@ -217,6 +217,6 @@ https://tanstack.com/query/latest/docs/react/overview
 ---
 
 # Fuentes
-https://react.dev/learn
-https://roadmap.sh/react
+- https://react.dev/learn
+- https://roadmap.sh/react
 
