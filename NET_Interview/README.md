@@ -1,3 +1,9 @@
+# General tips for the interview
+
+1. Do not hit around the bush (don't hide). Interviewer doesn't have time.
+2. Say the important points first.
+3. Use polished right technical vocabulary.
+
 # .NET Interview Questions
 
 ## What is the .NET framework?
