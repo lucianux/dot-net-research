@@ -74,6 +74,12 @@ $ sudo docker images -a
 *Borrando todos los contenedores*
 - sudo docker rm $(sudo docker ps -aq)
 
+*Limpiando recursos que no se usan*
+- sudo docker system prune -a
+
+*Borrando volumenes sin usar*
+- sudo docker volume prune
+
 *Borrando todas las imagenes*
 - sudo docker rmi $(sudo docker images -q)
 
