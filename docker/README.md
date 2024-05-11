@@ -24,7 +24,7 @@ En vez de utilizar Docker via una serie inmemorizable de comandos bash y scripts
 
 # Demo
 
-## Comandos básicos para administrar contenedores
+## Comandos básicos para administrar contenedores e imágenes
 
 $ sudo docker version
 // Devuelve la versión del cliente y la versión del servidor
@@ -38,6 +38,9 @@ $ sudo docker ps -a
 
 $ sudo docker container rm 9161
 // Elimino un contenedor específico de Docker que empieza con el ID "9161" 
+
+$ sudo docker images -a
+// Listar todas las imágenes
 
 ## Creando una ejemplo sencillo de una aplicación dotnet dentro de un contenedor Docker
 
