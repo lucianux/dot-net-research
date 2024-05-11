@@ -83,6 +83,14 @@ $ sudo docker images -a
 *Acceder al Filesystem de un contenedor:*
 - sudo docker exec -t -i 897 /bin/bash
 
+## Apendice B - Comandos de Docker Compose
+
+*Para levantar todo*
+- docker compose up --build -d
+
+*Para bajar todo lo levantado*
+- docker-compose down
+
 # Links
 
 - https://en.wikipedia.org/wiki/Docker_(software)
