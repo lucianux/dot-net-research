@@ -68,16 +68,16 @@ $ sudo docker container rm 9161
 
 ## Apendice A - Más comandos Docker que pueden servir
 
-*Borrando todos los contenedores
+*Borrando todos los contenedores*
 - sudo docker rm $(sudo docker ps -aq)
 
-*Borrando todas las imagenes
+*Borrando todas las imagenes*
 - sudo docker rmi $(sudo docker images -q)
 
-*Ver logs:
+*Ver logs:*
 - sudo docker logs {CONTAINER_ID}
 
-*Acceder al Filesystem de un contenedor:
+*Acceder al Filesystem de un contenedor:*
 - sudo docker exec -t -i 897 /bin/bash
 
 # Links
