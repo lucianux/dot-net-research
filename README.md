@@ -158,12 +158,13 @@ https://stackoverflow.com/questions/14728761/difference-between-virtual-and-abst
 ## Abstract class vs. Interface
 
 * Ambas coinciden en que no se pueden instanciar. Para que sí se pueda: se debe usar otra clase que herede o implemente.
-* Una clase abstracta puede tener métodos abstractos (sin implementación) y no abstractos (con implementación). En otras palabras, las clases abstractas se pueden implementar completamente, una parte o nada. En cambio, en las interfaces, no se puede implementar nada, proporcionan una abstracción total, definen un contrato.
+* Una clase abstracta puede tener métodos abstractos (sin implementación) y no abstractos (con implementación). En otras palabras, las clases abstractas se pueden implementar completamente, una parte o nada. En cambio, en las interfaces, no se puede implementar nada, todos los métodos son abstractos, definen un contrato.
+* Una clase abstracta puede heredar o extender cualquier clase (independientemente de que esta sea abstracta o no), mientras que una interfaz solamente puede extender o implementar otras interfaces.
 * Una clase abstracta puede tener constructores, una interfaz no.
 * Absolutamente todos los métodos declarados en una interfaz deben ser implementados por las clases que implementan la interfaz, no así en las clases abstractas.
 * Una interfaz no puede tener ningún dato miembro (member data). En cambio, una clase abstracta puede contener definiciones de métodos, campos y constructores, una interfaz solo puede tener declaraciones de eventos, métodos y propiedades.
-* Usando clases abstractas no podemos lograr herencia múltiple, pero si se puede usando interfaces. Dado que una clase puede implementar más de una interfaz, pero sólo extender una clase.
-* Por defecto, los métodos de una interfase son abstratos y públicos. Por ésto no se puede usar ningún modificador de acceso (como public, private, protected, internal, etc.), keywords como static, virtual, abstract or sealed.
+* Herencia múltiple: con clases abstractas no se puede, pero si con interfaces. Es decir, una clase puede implementar más de una interfaz, pero sólo heredar de una clase.
+* Por defecto, los métodos de una interfase son abstratos y públicos. Por ésto no se puede usar ningún modificador de acceso (como public, private, protected, internal, etc.), keywords como static, virtual, abstract or sealed. En la clase abstracta, los métodos abstractos pueden ser public o protected.
 * En resumen, una clase abstracta le permite crear funcionalidades que las subclases pueden implementar o sobreescribir. Una interfaz solo le permite definir la funcionalidad como un contrato, pero no implementarla.
 
 Fuentes:
