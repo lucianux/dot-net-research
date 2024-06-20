@@ -138,7 +138,8 @@ https://stackoverflow.com/questions/4317479/func-vs-action-vs-predicate
 The purpose of an abstract class is to provide a common definition of a base class that multiple derived classes can share.
 An abstract class cannot be instantiated.
 Abstract methods have no implementation.
-DERIVED CLASSES OF THE ABSTRACT CLASS MUST IMPLEMENT ALL ABSTRACT METHODS. 
+DERIVED CLASSES OF THE ABSTRACT CLASS MUST IMPLEMENT ALL ABSTRACT METHODS.
+
 Fuente:
 https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/abstract-and-sealed-classes-and-class-members
 
