@@ -133,7 +133,7 @@ The difference between Func and Action is simply whether you want the delegate t
 Fuente:
 https://stackoverflow.com/questions/4317479/func-vs-action-vs-predicate
 
-## Abstract class and methods.
+## Abstract class and methods
 
 The purpose of an abstract class is to provide a common definition of a base class that multiple derived classes can share.
 An abstract class cannot be instantiated.
