@@ -153,6 +153,7 @@ This negates the virtual aspect of the member for any further derived class.
 
 Virtual methods have an implementation and provide the derived classes with the option of overriding it. Abstract methods do not provide an implementation and force the derived classes to override the method.
 So, abstract methods have no actual code in them, and subclasses HAVE TO override the method. Virtual methods can have code, which is usually a default implementation of something, and any subclasses CAN override the method using the override modifier and provide a custom implementation.
+
 Fuente:
 https://stackoverflow.com/questions/14728761/difference-between-virtual-and-abstract-methods
 
