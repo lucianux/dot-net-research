@@ -102,7 +102,6 @@ namespace AuthenticationandAuthorization.Controllers
         /// Authorize the Method
         /// </summary>
         /// <returns></returns>
-        [Authorize]
         [HttpGet(nameof(Get))]
         public async Task<IEnumerable<string>> Get()
         {
