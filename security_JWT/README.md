@@ -34,6 +34,7 @@ Links
 
 https://medium.com/nerd-for-tech/authentication-and-authorization-in-net-core-web-api-using-jwt-token-and-swagger-ui-cc8d05aef03c
 https://github.com/JayKrishnareddy/AuthenticationandAuthorization/tree/master/AuthenticationandAuthorization
+https://medium.com/@sajadshafi/jwt-authentication-in-c-net-core-7-web-api-b825b3aee11d
 
 #### Qué es json web token y cómo funciona:
 
