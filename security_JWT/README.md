@@ -40,7 +40,7 @@ Ver:
 ----
 - Claims ... Incluir algunos claims
 - Expiration date ... Done, se configuró el JWT.
-- Usar el Authorize ... Me queda pendiente
+- Usar el Authorize ... Done.
 - Integrar con Angular... Debe mantener el token en LocalStorage
 
 #### Qué es json web token y cómo funciona:
