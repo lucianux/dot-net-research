@@ -39,7 +39,7 @@ https://medium.com/@sajadshafi/jwt-authentication-in-c-net-core-7-web-api-b825b3
 Ver:
 ----
 - Claims ... Incluir algunos claims
-- Expiration date ... Me queda pendiente
+- Expiration date ... Done, se configuró el JWT.
 - Usar el Authorize ... Me queda pendiente
 - Integrar con Angular... Debe mantener el token en LocalStorage
 

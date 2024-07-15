@@ -155,12 +155,13 @@ public class AuthenticateController : BaseController
     {
         return new TokenValidationParameters()
         {
-            ValidateLifetime = true, // Because there is no expiration in the generated token
-            ValidateAudience = true, // Because there is no audiance in the generated token
-            ValidateIssuer = true,   // Because there is no issuer in the generated token
+            ValidateLifetime = true,
+            ValidateAudience = true,
+            ValidateIssuer = true,
             ValidIssuer = _config["Jwt:Issuer"],
             ValidAudience = _config["Jwt:Issuer"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"])) // The same key as the one that generate the token
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"])), // The same key as the one that generate the token
+            ClockSkew = TimeSpan.Zero
         };
     }
 }
