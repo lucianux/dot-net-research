@@ -35,13 +35,15 @@ Links
 https://medium.com/nerd-for-tech/authentication-and-authorization-in-net-core-web-api-using-jwt-token-and-swagger-ui-cc8d05aef03c
 https://github.com/JayKrishnareddy/AuthenticationandAuthorization/tree/master/AuthenticationandAuthorization
 https://medium.com/@sajadshafi/jwt-authentication-in-c-net-core-7-web-api-b825b3aee11d
-
+https://auth0.com/blog/how-to-validate-jwt-dotnet/ -- Validation de JWT
+https://www.scottbrady91.com/c-sharp/json-web-encryption-jwe-in-dotnet-core -- JWT para encriptar
 Ver:
 ----
 - Claims ... Incluir algunos claims
 - Expiration date ... Done, se configuró el JWT.
 - Usar el Authorize ... Done.
-- Integrar con Angular... Debe mantener el token en LocalStorage
+- Integrar con Angular... Debe mantener el token en LocalStorage. Para decodificar se puede usar:
+  https://www.npmjs.com/package/jwt-decode
 
 #### Qué es json web token y cómo funciona:
 
