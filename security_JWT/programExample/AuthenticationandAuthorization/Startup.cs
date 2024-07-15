@@ -76,7 +76,7 @@ namespace AuthenticationandAuthorization
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
-                    ValidateLifetime = false,
+                    ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
                     ValidIssuer = Configuration["Jwt:Issuer"],
                     ValidAudience = Configuration["Jwt:Issuer"],
@@ -92,10 +92,17 @@ namespace AuthenticationandAuthorization
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+                app.UseHsts();
+            }
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
@@ -103,7 +110,6 @@ namespace AuthenticationandAuthorization
             {
                 endpoints.MapControllers();
             });
-            app.UseAuthentication();
             // Swagger Configuration in API
             app.UseSwagger();
             app.UseSwaggerUI(c =>
