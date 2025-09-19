@@ -18,6 +18,14 @@
 
 Analogía simple: la clase es como el plano de una casa, mientras que el objeto es la casa construida a partir de ese plano.
 
+Ejemplo:
+```
+Persona p1 = new Persona();
+p1.Nombre = "Juan";
+p1.Edad = 30;
+p1.Saludar(); // "Hola, me llamo Juan"
+```
+
 ## Los 4 fundamentos de la programación orientada a objetos:
 
 **Abstracción**: este principio dice que la POO busca modelar los objetos, busca abstraerse y simplificar un objeto de la vida real a solo un par de atributos. En otras palabras, buscaremos transformar un objeto de la vida real en atributos (características) y sus acciones (métodos). Consiste en encontrar las partes fundamentales de un sistema para describirlas de manera simple y precisa.
