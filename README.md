@@ -169,10 +169,6 @@ https://stackoverflow.com/questions/14728761/difference-between-virtual-and-abst
 * Por defecto, los métodos de una interfase son abstratos y públicos. Por ésto no se puede usar ningún modificador de acceso (como public, private, protected, internal, etc.), keywords como static, virtual, abstract or sealed. En la clase abstracta, los métodos abstractos pueden ser public o protected.
 * En resumen, una clase abstracta le permite crear funcionalidades que las subclases pueden implementar o sobreescribir. Una interfaz solo le permite definir la funcionalidad como un contrato, pero no implementarla.
 
-Fuentes:
-* https://www.infoworld.com/article/2928719/when-to-use-an-abstract-class-vs-interface-in-csharp.html
-* https://www.geeksforgeeks.org/difference-between-abstract-class-and-interface-in-c-sharp/
-
 -----
 
 ## MVC
