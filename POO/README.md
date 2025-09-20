@@ -28,9 +28,13 @@ p1.Saludar(); // "Hola, me llamo Juan"
 
 ## Los 4 fundamentos de la programación orientada a objetos:
 
-**Abstracción**: este principio dice que la POO busca modelar los objetos, busca abstraerse y simplificar un objeto de la vida real a solo un par de atributos. En otras palabras, buscaremos transformar un objeto de la vida real en atributos (características) y sus acciones (métodos). Consiste en encontrar las partes fundamentales de un sistema para describirlas de manera simple y precisa.
+### Abstracción
 
-**Encapsulamiento**: es la cualidad de los objetos de ocultar los detalles de implementación y su estado interno del mundo exterior. Es decir, establece que los detalles internos de un objeto deben estar protegidos y que el acceso a sus datos debe hacerse solo mediante métodos o propiedades controladas.
+Este principio dice que la POO busca modelar los objetos, busca abstraerse y simplificar un objeto de la vida real a solo un par de atributos. En otras palabras, buscaremos transformar un objeto de la vida real en atributos (características) y sus acciones (métodos). Consiste en encontrar las partes fundamentales de un sistema para describirlas de manera simple y precisa.
+
+### Encapsulamiento
+
+Es la cualidad de los objetos de ocultar los detalles de implementación y su estado interno del mundo exterior. Es decir, establece que los detalles internos de un objeto deben estar protegidos y que el acceso a sus datos debe hacerse solo mediante métodos o propiedades controladas.
 
 Características:
 * Esconde detalles de implementación.
@@ -53,19 +57,48 @@ Más fácil de recordar:
 - protected internal = más abierto → unión de permisos entre protected + internal.
 - private protected = más restringido → intersección de permisos entre protected + internal.
 
-**Herencia**: es el mecanismo por el cual las subclases (hija o derivada) reutilicen las propiedades y métodos de sus superclases (padre o base). En otras palabras, permite que una clase pueda servir como plantilla para la creación de futuras clases.
+### Herencia
+
+Es el mecanismo por el cual las subclases (hija o derivada) reutilicen las propiedades y métodos de sus superclases (padre o base). En otras palabras, permite que una clase pueda servir como plantilla para la creación de futuras clases.
 
 La herencia permite:
 * Crear una nueva clase como refinamiento de otra.
 * Diseñar e implementar sólo la diferencia que presenta la nueva clase.
-* Abstraer las similitudes en común, evitando la ***duplicación de código y fomentando la reutilización***.
+* Abstraer las similitudes en común, evitando la **duplicación de código y fomentando la reutilización**.
 
 Características en C#:
 * Se usa la palabra clave : para indicar herencia.
 * Soporta herencia simple (una sola clase padre).
 * Se puede sobrescribir métodos de la clase base con virtual y override.
 
-**Polimorfismo**: es la capacidad de que un mismo método o interfaz tenga múltiples implementaciones, de modo que una llamada al método ejecute el comportamiento correcto según el tipo real del objeto en tiempo de ejecución. ***En líneas generales, el polimorfismo permite que distintas clases respondan de manera diferente a un mismo mensaje o método.***
+### Polimorfismo
+
+Es la capacidad de que un mismo método o interfaz tenga múltiples implementaciones, de modo que una llamada al método ejecute el comportamiento correcto según el tipo real del objeto en tiempo de ejecución. **En líneas generales, el polimorfismo permite que distintas clases respondan de manera diferente a un mismo mensaje o método.**
+
+Tipos en C#:
+- Polimorfismo en tiempo de compilación (estático / overloading): mismo método con distinta firma (número o tipo de parámetros).
+Ejemplo:
+```
+class Calculadora {
+    public int Sumar(int a, int b) => a + b;
+    public double Sumar(double a, double b) => a + b;
+}
+```
+- Polimorfismo en tiempo de ejecución (dinámico / overriding): una clase derivada redefine un método de la base.
+Ejemplo:
+```
+class Animal {
+    public virtual void HacerSonido() {
+        Console.WriteLine("Sonido genérico");
+    }
+}
+
+class Perro : Animal {
+    public override void HacerSonido() {
+        Console.WriteLine("Guau guau");
+    }
+}
+```
 
 ## Cohesión y acoplamiento
 
