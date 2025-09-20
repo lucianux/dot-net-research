@@ -30,25 +30,42 @@ p1.Saludar(); // "Hola, me llamo Juan"
 
 **Abstracción**: este principio dice que la POO busca modelar los objetos, busca abstraerse y simplificar un objeto de la vida real a solo un par de atributos. En otras palabras, buscaremos transformar un objeto de la vida real en atributos (características) y sus acciones (métodos). Consiste en encontrar las partes fundamentales de un sistema para describirlas de manera simple y precisa.
 
-**Encapsulamiento**: es la cualidad de los objetos de ocultar los detalles de implementación y su estado interno del mundo exterior
+**Encapsulamiento**: es la cualidad de los objetos de ocultar los detalles de implementación y su estado interno del mundo exterior. Es decir, establece que los detalles internos de un objeto deben estar protegidos y que el acceso a sus datos debe hacerse solo mediante métodos o propiedades controladas.
+
 Características:
 * Esconde detalles de implementación.
 * Protege el estado interno de los objetos.
-* Un objeto sólo muestra su “cara visible” por medio de su protocolo.
+* Un objeto sólo muestra su "cara visible" por medio de su protocolo.
 * Los métodos y su estado quedan escondidos para cualquier otro objeto. Es el objeto quien decide qué se publica.
 * Facilita modularidad y reutilización.
 
-**Herencia**: es el mecanismo por el cual las subclases reutilizan el comportamiento y estructura reunido en sus superclases. En otras palabras, permite que una clase pueda servir como plantilla para la creación de futuras clases.
+Ésto se logra, usando los modificadores de acceso:
+- public → accesible desde cualquier lugar.
+- private → accesible solo dentro de la clase.
+- protected → accesible dentro de la clase y clases derivadas.
+- internal → accesible dentro del mismo ensamblado.
+- private protected → permite el acceso desde clases derivadas (como protected), pero únicamente si esas derivadas están en el mismo ensamblado (en protected, pueden estar en otro ensamblado).
+- protected internal → es accesible:
+  - desde cualquier clase del mismo ensamblado (como si fuera internal).
+  - desde clases derivadas, aunque estén en otro ensamblado (como si fuera protected).
+
+Más fácil de recordar:
+- protected internal = más abierto → unión de permisos entre protected + internal.
+- private protected = más restringido → intersección de permisos entre protected + internal.
+
+**Herencia**: es el mecanismo por el cual las subclases (hija o derivada) reutilicen las propiedades y métodos de sus superclases (padre o base). En otras palabras, permite que una clase pueda servir como plantilla para la creación de futuras clases.
+
 La herencia permite:
 * Crear una nueva clase como refinamiento de otra.
 * Diseñar e implementar sólo la diferencia que presenta la nueva clase.
-* Abstraer las similitudes en común.
+* Abstraer las similitudes en común, evitando la ***duplicación de código y fomentando la reutilización***.
 
-**Polimorfismo**: un solo nombre de una clase o método puede representar diferentes implementaciones, pero solo una interfaz. Es decir, comportamientos diferentes, asociados a objetos distintos, pueden compartir el mismo nombre; al llamarlos por ese nombre se utilizará el comportamiento correspondiente al objeto que se esté usando. Dicho de otro modo, las referencias y las colecciones de objetos pueden contener objetos de diferentes tipos, y la invocación de un comportamiento en una referencia producirá el comportamiento correcto para el tipo real del objeto referenciado.
+Características en C#:
+* Se usa la palabra clave : para indicar herencia.
+* Soporta herencia simple (una sola clase padre).
+* Se puede sobrescribir métodos de la clase base con virtual y override.
 
-Fuente:
-
-https://medium.com/@cancerian0684/what-are-four-basic-principles-of-object-oriented-programming-645af8b43727
+**Polimorfismo**: es la capacidad de que un mismo método o interfaz tenga múltiples implementaciones, de modo que una llamada al método ejecute el comportamiento correcto según el tipo real del objeto en tiempo de ejecución. ***En líneas generales, el polimorfismo permite que distintas clases respondan de manera diferente a un mismo mensaje o método.***
 
 ## Cohesión y acoplamiento
 
