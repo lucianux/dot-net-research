@@ -33,6 +33,7 @@ p1.Saludar(); // "Hola, me llamo Juan"
 **A grendes rasgos, es el principio que permite definir comportamientos comunes sin necesidad de implementar los detalles; nos centramos en qué hace un objeto, no en cómo lo hace.** Este principio dice que la POO busca modelar los objetos, busca abstraerse y simplificar un objeto de la vida real a solo un par de atributos. En otras palabras, buscaremos transformar un objeto de la vida real en atributos (características) y sus acciones (métodos). Consiste en encontrar las partes fundamentales de un sistema para describirlas de manera simple y precisa.
 
 Formas de implementarla en C#:
+
 - Clases abstractas
   - Se declaran con abstract.
   - Pueden tener métodos con implementación y métodos abstractos (sin cuerpo).
@@ -49,13 +50,10 @@ class Circulo : Figura {
 }
 ```
 
-Interfaces
-
-Se declaran con interface.
-
-Solo definen la firma de métodos y propiedades.
-
-Una clase puede implementar varias interfaces (multiplicidad).
+- Interfaces
+  - Se declaran con interface.
+  - Solo definen la firma de métodos y propiedades.
+  - Una clase puede implementar varias interfaces (multiplicidad).
 
 ```csharp
 interface IImprimible {
