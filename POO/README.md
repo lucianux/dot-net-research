@@ -166,3 +166,37 @@ class RepositorioClientes {
 - La clase tiene alta cohesión (solo se ocupa de clientes)
 - Tiene bajo acoplamiento (usa una interfaz para la BD, no una implementación fija).
 
+## Diseño y buenas prácticas
+
+### Diferencias entre clase abstracta e interfaz:
+
+- Similitud: ambas no pueden instanciarse directamente; deben usarse mediante clases derivadas (abstracta) o implementadoras (interfaz).
+- Clases abstractas:
+  - Pueden tener métodos abstractos (sin implementación) y concretos (con implementación).
+  - Pueden contener constructores, campos, propiedades y métodos.
+  - Solo se puede heredar de una clase (herencia simple). Una clase puede heredar sólo de una clase.
+- Interfaces:
+  - Definen contratos que una clase debe implementar.
+  - Pueden heredar de múltiples interfaces (soporte para herencia múltiple).
+  - Tradicionalmente no podían tener implementación, pero desde C# 8+ pueden incluir métodos con implementación por defecto, métodos estáticos y miembros privados.
+- Una clase abstracta puede heredar o extender cualquier clase (independientemente de que esta sea abstracta o no), mientras que una interfaz solamente puede extender o implementar otras interfaces.
+- Los métodos de una interfaz son públicos y abstractos, por lo que no hace falta especificar public ni abstract. Hasta C# 7, no se permitía agregar modificadores de acceso ni implementación en los métodos. Desde C# 8 en adelante, las interfaces pueden contener:
+  - Métodos con implementación (llamados default interface methods).
+  - Métodos privados, protegidos o internos dentro de la interfaz (solo para ser usados en la misma).
+  - Métodos estáticos y miembros estáticos (desde C# 11).
+- Resumen práctico:
+  - Usa clases abstractas cuando quieras compartir código base + contrato.
+  - Usa interfaces cuando quieras solo definir un contrato común entre clases, sin importar jerarquías.
+
+Ejemplo de implementaciones por defecto:
+```csharp
+public interface ILog {
+    void Log(string message); // abstracto
+
+    // Implementación por defecto (desde C# 8+)
+    void LogError(string message) {
+        Log($"ERROR: {message}");
+    }
+}
+```
+
