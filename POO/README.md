@@ -200,3 +200,13 @@ public interface ILog {
 }
 ```
 
+### Clases y métodos sealed
+
+- Una clase sealed (sellada) no puede usarse como clase base.
+- Las clases selladas impiden la herencia.
+- Esto anula el aspecto virtual de los miembros para cualquier clase derivada adicional.
+
+### Virtual vs Abstract
+
+- Los métodos abstractos no contienen código y las subclases deben sobrescribirlos.
+- Los métodos virtuales sí pueden contener código (normalmente una implementación por defecto), y las subclases pueden sobrescribirlos usando el modificador override para dar una implementación personalizada.
