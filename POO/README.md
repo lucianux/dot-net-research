@@ -30,7 +30,44 @@ p1.Saludar(); // "Hola, me llamo Juan"
 
 ### Abstracción
 
-Este principio dice que la POO busca modelar los objetos, busca abstraerse y simplificar un objeto de la vida real a solo un par de atributos. En otras palabras, buscaremos transformar un objeto de la vida real en atributos (características) y sus acciones (métodos). Consiste en encontrar las partes fundamentales de un sistema para describirlas de manera simple y precisa.
+**A grendes rasgos, es el principio que permite definir comportamientos comunes sin necesidad de implementar los detalles; nos centramos en qué hace un objeto, no en cómo lo hace.** Este principio dice que la POO busca modelar los objetos, busca abstraerse y simplificar un objeto de la vida real a solo un par de atributos. En otras palabras, buscaremos transformar un objeto de la vida real en atributos (características) y sus acciones (métodos). Consiste en encontrar las partes fundamentales de un sistema para describirlas de manera simple y precisa.
+
+Formas de implementarla en C#:
+- Clases abstractas
+  - Se declaran con abstract.
+  - Pueden tener métodos con implementación y métodos abstractos (sin cuerpo).
+  - No se pueden instanciar directamente.
+
+```csharp
+abstract class Figura {
+    public abstract double CalcularArea(); // obliga a implementarlo
+}
+
+class Circulo : Figura {
+    public double Radio { get; set; }
+    public override double CalcularArea() => Math.PI * Radio * Radio;
+}
+```
+
+Interfaces
+
+Se declaran con interface.
+
+Solo definen la firma de métodos y propiedades.
+
+Una clase puede implementar varias interfaces (multiplicidad).
+
+```csharp
+interface IImprimible {
+    void Imprimir();
+}
+
+class Documento : IImprimible {
+    public void Imprimir() {
+        Console.WriteLine("Imprimiendo documento...");
+    }
+}
+```
 
 ### Encapsulamiento
 
@@ -76,6 +113,7 @@ Características en C#:
 Es la capacidad de que un mismo método o interfaz tenga múltiples implementaciones, de modo que una llamada al método ejecute el comportamiento correcto según el tipo real del objeto en tiempo de ejecución. **En líneas generales, el polimorfismo permite que distintas clases respondan de manera diferente a un mismo mensaje o método.**
 
 Tipos en C#:
+
 - Polimorfismo en tiempo de compilación (estático / overloading): mismo método con distinta firma (número o tipo de parámetros).
 Ejemplo:
 ```csharp
@@ -84,6 +122,7 @@ class Calculadora {
     public double Sumar(double a, double b) => a + b;
 }
 ```
+
 - Polimorfismo en tiempo de ejecución (dinámico / overriding): una clase derivada redefine un método de la base.
 Ejemplo:
 ```csharp
