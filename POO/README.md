@@ -210,3 +210,22 @@ public interface ILog {
 
 - Los métodos abstractos no contienen código y las subclases deben sobrescribirlos.
 - Los métodos virtuales sí pueden contener código (normalmente una implementación por defecto), y las subclases pueden sobrescribirlos usando el modificador override para dar una implementación personalizada.
+
+### SOLID
+
+- S: Single Responsibility Principle (SRP): una clase debe tener una única responsabilidad y, por lo tanto, una sola razón para cambiar. **Ejemplo:** una clase Factura debe encargarse de manejar datos de facturación, pero no de guardar facturas en la base de datos (eso sería tarea de un repositorio).
+- O: Open-Closed Principle (OCP): el software debe estar abierto a la extensión pero cerrado a la modificación. Es decir, se puede agregar nuevas funcionalidades sin tener que modificar el código existente. **Ejemplo:** usar herencia o interfaces para extender comportamiento en lugar de editar la clase base directamente.
+- L: Liskov Substitution Principle (LSP): los objetos de una superclase deben poder ser sustituidos por objetos de sus subclases sin alterar el correcto funcionamiento del programa. Es decir, que una subclase debe respetar el contrato de la clase base. **Ejemplo:** si Ave tiene un método Volar(), una subclase Pinguino no debería heredar de Ave porque rompería el contrato (los pingüinos no vuelan).
+- I: Interface Segregation Principle (ISP): es mejor crear interfaces específicas y pequeñas en lugar de una interfaz grande y genérica. Es decir, los clientes no deben verse obligados a depender de métodos que no necesitan. **Ejemplo:** en vez de tener una interfaz IMultifuncional con Imprimir(), Escanear(), Fax(), Copiar(), es mejor separar en IImpresora, IEscaner, etc., de modo que cada clase implemente solo lo que realmente usa.
+- D: Dependency Inversion Principle (DIP): el código debe depender de abstracciones (interfaces), no de implementaciones concretas. En este principio hay dos reglas:
+  - Los módulos de alto nivel no deben depender de módulos de bajo nivel. (relación de conocimiento con abstracciones)
+  - Las abstracciones no deben depender de los detalles, sino que los detalles deben depender de las abstracciones. (implementar una interfase o clase abstracta)
+**Ejemplo:** en lugar de que una clase ServicioPedidos cree directamente un RepositorioPedidosSql, debe depender de una interfaz IRepositorioPedidos, y que el detalle concreto (RepositorioPedidosSql, RepositorioPedidosOracle, etc.) se inyecte externamente.
+
+S: Una clase = una responsabilidad.
+O: Extender, no modificar.
+L: Las subclases deben cumplir lo prometido por la superclase.
+I: Interfaces pequeñas y específicas.
+D: Depender de abstracciones, no de implementaciones.
+
+
