@@ -19,7 +19,7 @@
 Analogía simple: la clase es como el plano de una casa, mientras que el objeto es la casa construida a partir de ese plano.
 
 Ejemplo:
-```
+```csharp
 Persona p1 = new Persona();
 p1.Nombre = "Juan";
 p1.Edad = 30;
@@ -78,7 +78,7 @@ Es la capacidad de que un mismo método o interfaz tenga múltiples implementaci
 Tipos en C#:
 - Polimorfismo en tiempo de compilación (estático / overloading): mismo método con distinta firma (número o tipo de parámetros).
 Ejemplo:
-```
+```csharp
 class Calculadora {
     public int Sumar(int a, int b) => a + b;
     public double Sumar(double a, double b) => a + b;
@@ -86,7 +86,7 @@ class Calculadora {
 ```
 - Polimorfismo en tiempo de ejecución (dinámico / overriding): una clase derivada redefine un método de la base.
 Ejemplo:
-```
+```csharp
 class Animal {
     public virtual void HacerSonido() {
         Console.WriteLine("Sonido genérico");
