@@ -139,11 +139,8 @@ class Perro : Animal {
 
 ## Cohesión y acoplamiento
 
-La cohesión es el efecto que se produce cuando las cosas se reunen o adhieren entre sí. Algo está cohesionado si tiene sentido y una dirección común. Algo tiene alta cohesión si tiene un alcance definido, unos límites claros y un contenido delimitado y perfectamente ubicado. Si hablásemos de POO, una clase tendrá alta cohesión si sus métodos están relacionados entre sí, tienen un contenido claro y temática común, trabajan con tipos similares, etc. Todo bien encerrado dentro de la clase, y perfectamente delimitado.
+**La cohesión** es el efecto que se produce cuando las cosas se reunen o adhieren entre sí. Algo está cohesionado si tiene sentido y una dirección común. **Algo tiene alta cohesión si tiene un alcance definido, unos límites claros y un contenido delimitado y perfectamente ubicado**. Si hablásemos de POO, una clase tendrá alta cohesión si sus métodos están relacionados entre sí, tienen un contenido claro y temática común, trabajan con tipos similares, etc. Todo bien encerrado dentro de la clase, y perfectamente delimitado.
 
-El acoplamiento es el grado en que los módulos de un programa dependen unos de otros. Si para hacer cambios en un módulo del programa es necesario hacer cambios en otro módulo distinto, existe acoplamiento entre ambos módulos.
+**El acoplamiento** es el grado en que los módulos de un programa dependen unos de otros. Si para hacer cambios en un módulo del programa es necesario hacer cambios en otro módulo distinto, existe acoplamiento entre ambos módulos.
 
-Lo ideal es tener bajo acoplamiento y alta cohesión.
-
-Fuente:
-- https://www.disrupciontecnologica.com/acoplamiento-y-cohesion/
+**Lo ideal es tener bajo acoplamiento y alta cohesión.**
