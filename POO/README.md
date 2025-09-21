@@ -334,3 +334,123 @@ Existen tres formas de inyección: por constructor (la más común), por propied
 Los servicios se registran con un ciclo de vida: Transient, Scoped o Singleton.
 
 En resumen: la DI es la aplicación práctica del Principio de Inversión de Dependencias (DIP) de SOLID.
+
+## Patrones de diseño básicos en .NET
+
+### Factory
+
+**Qué es:** Un patrón creacional que encapsula la lógica de creación de objetos.  
+**Cuándo usarlo:** Cuando queremos delegar la responsabilidad de instanciar objetos y no acoplar nuestro código a `new`.  
+
+``` csharp
+public interface ITransporte {
+    void Enviar();
+}
+
+public class Avion : ITransporte {
+    public void Enviar() => Console.WriteLine("Envío por avión");
+}
+
+public class Barco : ITransporte {
+    public void Enviar() => Console.WriteLine("Envío por barco");
+}
+
+public static class TransporteFactory {
+    public static ITransporte Crear(string tipo) =>
+        tipo switch {
+            "avion" => new Avion(),
+            "barco" => new Barco(),
+            _ => throw new ArgumentException("Tipo inválido")
+        };
+}
+```
+
+### Singleton
+
+**Qué es:** Un patrón creacional que asegura que **solo exista una instancia** de una clase en toda la aplicación.  
+**Cuándo usarlo:** Cuando se necesita un único punto de acceso global, como configuración, cache, logger.  
+
+``` csharp
+public sealed class Logger {
+    private static readonly Logger _instancia = new Logger();
+    public static Logger Instancia => _instancia;
+    private Logger() { }
+    public void Log(string msg) => Console.WriteLine(msg);
+}
+```
+
+### Strategy
+
+**Qué es:** Un patrón de comportamiento que define una **familia de algoritmos** y permite intercambiarlos en tiempo de ejecución.  
+**Cuándo usarlo:** Cuando querés cambiar dinámicamente cómo se hace una operación sin modificar el cliente.  
+
+``` csharp
+public interface ICalculoImpuesto {
+    decimal Calcular(decimal monto);
+}
+
+public class IVA : ICalculoImpuesto {
+    public decimal Calcular(decimal monto) => monto * 0.21m;
+}
+
+public class Ganancias : ICalculoImpuesto {
+    public decimal Calcular(decimal monto) => monto * 0.35m;
+}
+
+public class Factura {
+    private readonly ICalculoImpuesto _estrategia;
+    public Factura(ICalculoImpuesto estrategia) {
+        _estrategia = estrategia;
+    }
+    public decimal CalcularTotal(decimal monto) => monto + _estrategia.Calcular(monto);
+}
+```
+
+### Repository
+
+**Qué es:** Un patrón estructural que abstrae el acceso a datos. Actúa como un **intermediario entre la aplicación y la capa de persistencia**.  
+**Cuándo usarlo:** Para aislar la lógica de negocio de la lógica de acceso a datos.  
+
+``` csharp
+public interface IClienteRepository {
+    Cliente ObtenerPorId(int id);
+    void Agregar(Cliente cliente);
+}
+
+public class ClienteRepositorySql : IClienteRepository {
+    public Cliente ObtenerPorId(int id) {
+        // Lógica SQL
+        return new Cliente { Id = id, Nombre = "Juan" };
+    }
+    public void Agregar(Cliente cliente) {
+        // Insert SQL
+    }
+}
+```
+
+### Dependency Injection (DI) - Lo vimos previamente
+
+**Qué es:** Un patrón que implementa la **Inversión de Dependencias (DIP)** de SOLID. Las clases no crean sus dependencias, sino que las reciben (se inyectan).  
+**Cuándo usarlo:** Para reducir acoplamiento, facilitar pruebas unitarias y permitir intercambiar implementaciones.  
+
+``` csharp
+// Registro
+services.AddScoped<IClienteRepository, ClienteRepositorySql>();
+
+// Uso
+public class ClienteService {
+    private readonly IClienteRepository _repo;
+    public ClienteService(IClienteRepository repo) {
+        _repo = repo;
+    }
+}
+```
+
+### Resumen
+
+- **Factory:** delega la creación de objetos.\
+- **Singleton:** asegura una única instancia global.\
+- **Strategy:** define algoritmos intercambiables.\
+- **Repository:** separa lógica de negocio del acceso a datos.\
+- **Dependency Injection:** inyecta dependencias externas, favorece bajo acoplamiento.
+
