@@ -325,3 +325,10 @@ En resumen, la Inyección de Dependencias en .NET Core es la implementación pr�
 - Los módulos de alto nivel dependen de abstracciones.
 - Las implementaciones concretas (detalles) dependen de esas abstracciones.
 
+#### Resumen
+
+La Inyección de Dependencias (DI) es un patrón que permite reducir el acoplamiento entre clases haciendo que dependan de abstracciones y no de implementaciones concretas. En lugar de crear sus dependencias, las reciben desde afuera (IoC).
+En .NET Core está integrada con Microsoft.Extensions.DependencyInjection y se configura en Program.cs o Startup.
+Existen tres formas de inyección: por constructor (la más común), por propiedad y por método.
+Los servicios se registran con un ciclo de vida: Transient, Scoped o Singleton.
+En resumen: la DI es la aplicación práctica del Principio de Inversión de Dependencias (DIP) de SOLID.
