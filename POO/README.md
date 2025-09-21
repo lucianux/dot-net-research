@@ -228,4 +228,100 @@ L: Las subclases deben cumplir lo prometido por la superclase.
 I: Interfaces pequeñas y específicas.
 D: Depender de abstracciones, no de implementaciones.
 
+### Inyección por dependencias
+
+La Inyección de Dependencias (DI) es un mecanismo que busca reducir el acoplamiento entre clases.
+
+En lugar de que una clase cree directamente sus dependencias (por ejemplo, new ServicioConcreto()), se hace que estas le sean inyectadas desde el exterior, normalmente a través de interfaces.
+
+Esto ayuda a:
+- Cumplir el Principio de Inversión de Dependencias (DIP) de SOLID.
+- Mantener clases con una sola responsabilidad.
+- Poder cambiar una implementación por otra sin modificar el código que la usa (ej. RepositorioSql ↔ RepositorioOracle)
+
+#### Inversión de Control (IoC)
+
+La DI se apoya en el concepto de Inversión de Control (IoC):
+- Tradicionalmente, una clase controla qué dependencias crea y usa.
+- Con IoC, ese control se invierte: es el contenedor (framework, configuración o factoría) el que provee la implementación adecuada.
+
+#### Tipos de Inyección de Dependencias
+
+1. Por constructor (la más usada en .NET Core):
+```csharp
+public class PedidoService {
+    private readonly IRepositorioPedidos _repo;
+
+    public PedidoService(IRepositorioPedidos repo) {
+        _repo = repo;
+    }
+}
+```
+
+2. Por propiedad (setter injection):
+```csharp
+public class PedidoService {
+    public IRepositorioPedidos Repo { get; set; }
+}
+```
+
+3. Por método (method injection):
+```csharp
+public class PedidoService {
+    public void Procesar(IRepositorioPedidos repo) {
+        repo.Guardar();
+    }
+}
+```
+
+#### Dependency Injection en .NET Core
+
+En ASP.NET Core, la DI está integrada de forma nativa a través de la librería Microsoft.Extensions.DependencyInjection.
+La configuración se realiza en Program.cs o en Startup.ConfigureServices:
+
+```csharp
+// Registro en el contenedor de servicios
+services.AddScoped<IRepositorioPedidos, RepositorioPedidosSql>();
+```
+
+Luego, cualquier clase que requiera IRepositorioPedidos recibirá automáticamente la implementación registrada:
+
+```csharp
+public class PedidoController : ControllerBase {
+    private readonly IRepositorioPedidos _repo;
+
+    public PedidoController(IRepositorioPedidos repo) {
+        _repo = repo;
+    }
+
+    [HttpPost]
+    public IActionResult CrearPedido(Pedido pedido) {
+        _repo.Guardar(pedido);
+        return Ok();
+    }
+}
+```
+
+#### Ciclo de vida de los servicios
+
+Al registrar dependencias, se debe indicar el lifetime del objeto:
+- Transient: se crea una instancia nueva cada vez que se solicita.
+- Scoped: se crea una instancia por cada request HTTP.
+- Singleton: se crea una sola instancia para toda la aplicación.
+
+#### Ventajas de DI
+
+- Bajo acoplamiento y mayor cohesión.
+- Facilidad para sustituir implementaciones (ej. cambiar repositorio SQL por repositorio en memoria).
+- Facilita las pruebas unitarias mediante mocks o stubs.
+- Favorece la extensibilidad y el mantenimiento.
+
+#### Riesgos si se abusa:
+
+- Clases con demasiadas dependencias inyectadas (mal diseño).
+- Selección incorrecta del ciclo de vida → problemas de rendimiento o concurrencia.
+
+En resumen, la Inyección de Dependencias en .NET Core es la implementación práctica del principio DIP de SOLID:
+- Los módulos de alto nivel dependen de abstracciones.
+- Las implementaciones concretas (detalles) dependen de esas abstracciones.
 
