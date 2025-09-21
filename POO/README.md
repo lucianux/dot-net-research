@@ -1,8 +1,6 @@
-# Programación orientada a objetos
+# Principios
 
-## Principios
-
-### Clase
+## Clase
 
 - Es un molde o plantilla que define cómo serán los objetos.
 - Contiene:
@@ -10,7 +8,7 @@
   - Métodos (funciones): definen el comportamiento (ej. caminar, comer).
 - Por sí sola no ocupa memoria (es una definición).
 
-### Objeto
+## Objeto
 
 - Es una instancia concreta de una clase.
 - Representa un ente real o conceptual con un estado específico.
@@ -26,9 +24,9 @@ p1.Edad = 30;
 p1.Saludar(); // "Hola, me llamo Juan"
 ```
 
-## Los 4 fundamentos de la programación orientada a objetos:
+# Los 4 fundamentos de la programación orientada a objetos:
 
-### Abstracción
+## Abstracción
 
 **A grendes rasgos, es el principio que permite definir comportamientos comunes sin necesidad de implementar los detalles; nos centramos en qué hace un objeto, no en cómo lo hace.** Este principio dice que la POO busca modelar los objetos, busca abstraerse y simplificar un objeto de la vida real a solo un par de atributos. En otras palabras, buscaremos transformar un objeto de la vida real en atributos (características) y sus acciones (métodos). Consiste en encontrar las partes fundamentales de un sistema para describirlas de manera simple y precisa.
 
@@ -67,7 +65,7 @@ class Documento : IImprimible {
 }
 ```
 
-### Encapsulamiento
+## Encapsulamiento
 
 Es la cualidad de los objetos de ocultar los detalles de implementación y su estado interno del mundo exterior. Es decir, establece que los detalles internos de un objeto deben estar protegidos y que el acceso a sus datos debe hacerse solo mediante métodos o propiedades controladas.
 
@@ -92,7 +90,7 @@ Más fácil de recordar:
 - protected internal = más abierto → unión de permisos entre protected + internal.
 - private protected = más restringido → intersección de permisos entre protected + internal.
 
-### Herencia
+## Herencia
 
 Es el mecanismo por el cual las subclases (hija o derivada) reutilicen las propiedades y métodos de sus superclases (padre o base). En otras palabras, permite que una clase pueda servir como plantilla para la creación de futuras clases.
 
@@ -106,7 +104,7 @@ Características en C#:
 * Soporta herencia simple (una sola clase padre).
 * Se puede sobrescribir métodos de la clase base con virtual y override.
 
-### Polimorfismo
+## Polimorfismo
 
 Es la capacidad de que un mismo método o interfaz tenga múltiples implementaciones, de modo que una llamada al método ejecute el comportamiento correcto según el tipo real del objeto en tiempo de ejecución. **En líneas generales, el polimorfismo permite que distintas clases respondan de manera diferente a un mismo mensaje o método.**
 
@@ -137,7 +135,7 @@ class Perro : Animal {
 }
 ```
 
-## Cohesión y acoplamiento
+# Cohesión y acoplamiento
 
 **La cohesión** es el grado en que los elementos de un módulo o clase trabajan juntos hacia un mismo propósito. Una clase tiene alta cohesión si todos sus métodos y atributos están claramente relacionados entre sí y contribuyen a una única responsabilidad. Existen distintos grados de cohesión (cohesión lógica, funcional, secuencial, etc.), y que lo más deseable es la cohesión funcional: que todos los métodos de una clase contribuyan a un único propósito.
 
@@ -166,9 +164,9 @@ class RepositorioClientes {
 - La clase tiene alta cohesión (solo se ocupa de clientes)
 - Tiene bajo acoplamiento (usa una interfaz para la BD, no una implementación fija).
 
-## Diseño y buenas prácticas
+# Diseño y buenas prácticas
 
-### Diferencias entre clase abstracta e interfaz:
+## Diferencias entre clase abstracta e interfaz:
 
 - Similitud: ambas no pueden instanciarse directamente; deben usarse mediante clases derivadas (abstracta) o implementadoras (interfaz).
 - Clases abstractas:
@@ -200,18 +198,18 @@ public interface ILog {
 }
 ```
 
-### Clases y métodos sealed
+## Clases y métodos sealed
 
 - Una clase sealed (sellada) no puede usarse como clase base.
 - Las clases selladas impiden la herencia.
 - Esto anula el aspecto virtual de los miembros para cualquier clase derivada adicional.
 
-### Virtual vs Abstract
+## Virtual vs Abstract
 
 - Los métodos abstractos no contienen código y las subclases deben sobrescribirlos.
 - Los métodos virtuales sí pueden contener código (normalmente una implementación por defecto), y las subclases pueden sobrescribirlos usando el modificador override para dar una implementación personalizada.
 
-### SOLID
+## SOLID
 
 - S: Single Responsibility Principle (SRP): una clase debe tener una única responsabilidad y, por lo tanto, una sola razón para cambiar. **Ejemplo:** una clase Factura debe encargarse de manejar datos de facturación, pero no de guardar facturas en la base de datos (eso sería tarea de un repositorio).
 - O: Open-Closed Principle (OCP): el software debe estar abierto a la extensión pero cerrado a la modificación. Es decir, se puede agregar nuevas funcionalidades sin tener que modificar el código existente. **Ejemplo:** usar herencia o interfaces para extender comportamiento en lugar de editar la clase base directamente.
@@ -228,7 +226,7 @@ L: Las subclases deben cumplir lo prometido por la superclase.
 I: Interfaces pequeñas y específicas.
 D: Depender de abstracciones, no de implementaciones.
 
-### Inyección por dependencias
+## Inyección por dependencias
 
 La Inyección de Dependencias (DI) es un mecanismo que busca reducir el acoplamiento entre clases.
 
@@ -239,13 +237,13 @@ Esto ayuda a:
 - Mantener clases con una sola responsabilidad.
 - Poder cambiar una implementación por otra sin modificar el código que la usa (ej. RepositorioSql ↔ RepositorioOracle)
 
-#### Inversión de Control (IoC)
+### Inversión de Control (IoC)
 
 La DI se apoya en el concepto de Inversión de Control (IoC):
 - Tradicionalmente, una clase controla qué dependencias crea y usa.
 - Con IoC, ese control se invierte: es el contenedor (framework, configuración o factoría) el que provee la implementación adecuada.
 
-#### Tipos de Inyección de Dependencias
+### Tipos de Inyección de Dependencias
 
 1. Por constructor (la más usada en .NET Core):
 ```csharp
@@ -274,7 +272,7 @@ public class PedidoService {
 }
 ```
 
-#### Dependency Injection en .NET Core
+### Dependency Injection en .NET Core
 
 En ASP.NET Core, la DI está integrada de forma nativa a través de la librería Microsoft.Extensions.DependencyInjection.
 La configuración se realiza en Program.cs o en Startup.ConfigureServices:
@@ -302,21 +300,21 @@ public class PedidoController : ControllerBase {
 }
 ```
 
-#### Ciclo de vida de los servicios
+### Ciclo de vida de los servicios
 
 Al registrar dependencias, se debe indicar el lifetime del objeto:
 - Transient: se crea una instancia nueva cada vez que se solicita.
 - Scoped: se crea una instancia por cada request HTTP.
 - Singleton: se crea una sola instancia para toda la aplicación.
 
-#### Ventajas de DI
+### Ventajas de DI
 
 - Bajo acoplamiento y mayor cohesión.
 - Facilidad para sustituir implementaciones (ej. cambiar repositorio SQL por repositorio en memoria).
 - Facilita las pruebas unitarias mediante mocks o stubs.
 - Favorece la extensibilidad y el mantenimiento.
 
-#### Riesgos si se abusa:
+### Riesgos si se abusa:
 
 - Clases con demasiadas dependencias inyectadas (mal diseño).
 - Selección incorrecta del ciclo de vida → problemas de rendimiento o concurrencia.
@@ -325,7 +323,7 @@ En resumen, la Inyección de Dependencias en .NET Core es la implementación pr�
 - Los módulos de alto nivel dependen de abstracciones.
 - Las implementaciones concretas (detalles) dependen de esas abstracciones.
 
-#### Resumen
+### Resumen
 
 La Inyección de Dependencias (DI) es un patrón que permite reducir el acoplamiento entre clases haciendo que dependan de abstracciones y no de implementaciones concretas. En lugar de crear sus dependencias, las reciben desde afuera (IoC).
 
