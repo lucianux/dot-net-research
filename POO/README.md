@@ -490,6 +490,43 @@ public class ColegaConcreto : Colega {
 }
 ```
 
+### Builder
+
+**Qué es:** Un patrón creacional que separa la construcción de un objeto complejo de su representación final.  
+**Cuándo usarlo:** Cuando un objeto requiere múltiples pasos de construcción.  
+
+```csharp
+public class Auto {
+    public string Motor { get; set; }
+    public int Puertas { get; set; }
+}
+
+public class AutoBuilder {
+    private Auto _auto = new Auto();
+    public AutoBuilder ConMotor(string motor) { _auto.Motor = motor; return this; }
+    public AutoBuilder ConPuertas(int puertas) { _auto.Puertas = puertas; return this; }
+    public Auto Construir() => _auto;
+}
+```
+
+### Template Method
+
+**Qué es:** Un patrón de comportamiento que define el esqueleto de un algoritmo en una clase base, dejando pasos a redefinir en subclases.  
+**Cuándo usarlo:** Cuando se quiere reutilizar la estructura de un proceso pero permitir variaciones en pasos concretos.  
+
+```csharp
+public abstract class Juego {
+    public void Jugar() {
+        Inicializar();
+        IniciarJuego();
+        Finalizar();
+    }
+    protected abstract void Inicializar();
+    protected abstract void IniciarJuego();
+    protected abstract void Finalizar();
+}
+```
+
 ### Resumen
 
 - **Factory:** delega la creación de objetos.\
