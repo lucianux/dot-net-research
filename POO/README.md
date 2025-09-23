@@ -446,6 +446,50 @@ public class ClienteService {
 }
 ```
 
+### Facade
+
+**Qué es:** Un patrón estructural que proporciona una **interfaz simplificada** a un sistema complejo.  
+**Cuándo usarlo:** Cuando se quiere ocultar la complejidad interna y ofrecer un punto de acceso único.  
+
+```csharp
+public class SistemaComplejo {
+    public void Paso1() => Console.WriteLine("Ejecutando paso 1");
+    public void Paso2() => Console.WriteLine("Ejecutando paso 2");
+    public void Paso3() => Console.WriteLine("Ejecutando paso 3");
+}
+
+public class Fachada {
+    private readonly SistemaComplejo _sistema = new SistemaComplejo();
+    public void Operacion() {
+        _sistema.Paso1();
+        _sistema.Paso2();
+        _sistema.Paso3();
+    }
+}
+```
+
+### Mediator
+
+**Qué es:** Un patrón de comportamiento que centraliza la comunicación entre objetos.  
+**Cuándo usarlo:** Para reducir dependencias directas entre clases.  
+
+```csharp
+public interface IMediador {
+    void Enviar(string mensaje, Colega emisor);
+}
+
+public abstract class Colega {
+    protected IMediador mediador;
+    public Colega(IMediador m) { mediador = m; }
+}
+
+public class ColegaConcreto : Colega {
+    public ColegaConcreto(IMediador m) : base(m) {}
+    public void Enviar(string mensaje) => mediador.Enviar(mensaje, this);
+    public void Recibir(string mensaje) => Console.WriteLine($"Recibido: {mensaje}");
+}
+```
+
 ### Resumen
 
 - **Factory:** delega la creación de objetos.\
