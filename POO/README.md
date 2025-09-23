@@ -453,4 +453,14 @@ public class ClienteService {
 - **Strategy:** define algoritmos intercambiables.\
 - **Repository:** separa lógica de negocio del acceso a datos.\
 - **Dependency Injection:** inyecta dependencias externas, favorece bajo acoplamiento.
-
+- **Facade:** simplifica acceso a sistemas complejos.  
+- **Mediator:** centraliza comunicación entre objetos.  
+- **Builder:** construye objetos paso a paso.  
+- **Template Method:** define algoritmo base, pasos en subclases.  
+- **Unit of Work:** coordina transacciones en persistencia.  
+- **Command:** encapsula solicitudes como objetos.  
+- **Observer:** notifica a múltiples objetos ante cambios.  
+- **Iterator:** recorre colecciones sin exponer detalles.  
+- **Adapter:** convierte una interfaz en otra compatible.  
+- **State:** cambia comportamiento según estado interno.  
+- **Strategy:** intercambia algoritmos en tiempo de ejecución.  
