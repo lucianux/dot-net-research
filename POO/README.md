@@ -555,6 +555,37 @@ public class SaludarCommand : ICommand {
 }
 ```
 
+### Observer
+
+**Qué es:** Un patrón de comportamiento donde un objeto (sujeto) notifica a múltiples observadores sobre cambios de estado.  
+**Cuándo usarlo:** Cuando varios objetos deben reaccionar a cambios en otro objeto.  
+
+```csharp
+public interface IObservador {
+    void Actualizar(string estado);
+}
+
+public class Sujeto {
+    private List<IObservador> _obs = new();
+    public void Agregar(IObservador o) => _obs.Add(o);
+    public void Notificar(string estado) {
+        foreach (var o in _obs) o.Actualizar(estado);
+    }
+}
+```
+
+### Iterator
+
+**Qué es:** Un patrón de comportamiento que permite recorrer elementos de una colección sin exponer su estructura interna.  
+**Cuándo usarlo:** Para proveer un recorrido uniforme de colecciones.  
+
+```csharp
+public interface IIterador<T> {
+    bool TieneSiguiente();
+    T Siguiente();
+}
+```
+
 ### Resumen
 
 - **Factory:** delega la creación de objetos.\
