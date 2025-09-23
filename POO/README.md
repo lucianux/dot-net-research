@@ -586,6 +586,63 @@ public interface IIterador<T> {
 }
 ```
 
+### Adapter
+
+**Qué es:** Un patrón estructural que convierte la interfaz de una clase en otra que el cliente espera.  
+**Cuándo usarlo:** Para reutilizar clases existentes con interfaces incompatibles.  
+
+```csharp
+public interface ITarget {
+    void Solicitud();
+}
+
+public class Adaptee {
+    public void SolicitudEspecifica() => Console.WriteLine("Solicitud específica");
+}
+
+public class Adapter : ITarget {
+    private Adaptee _adaptee = new Adaptee();
+    public void Solicitud() => _adaptee.SolicitudEspecifica();
+}
+```
+
+### State
+
+**Qué es:** Un patrón de comportamiento que permite a un objeto cambiar su comportamiento cuando cambia su estado interno.  
+**Cuándo usarlo:** Para modelar estados con transiciones claras.  
+
+```csharp
+public interface IEstado {
+    void Manejar();
+}
+
+public class Contexto {
+    private IEstado _estado;
+    public Contexto(IEstado estado) { _estado = estado; }
+    public void SetEstado(IEstado estado) { _estado = estado; }
+    public void Request() => _estado.Manejar();
+}
+```
+
+### Strategy
+
+**Qué es:** Un patrón de comportamiento que define una familia de algoritmos y permite intercambiarlos en tiempo de ejecución.  
+**Cuándo usarlo:** Cuando un algoritmo puede variar y se necesita flexibilidad sin modificar al cliente.  
+
+```csharp
+public interface IEstrategia {
+    void Ejecutar();
+}
+
+public class EstrategiaA : IEstrategia {
+    public void Ejecutar() => Console.WriteLine("Estrategia A");
+}
+
+public class EstrategiaB : IEstrategia {
+    public void Ejecutar() => Console.WriteLine("Estrategia B");
+}
+```
+
 ### Resumen
 
 - **Factory:** delega la creación de objetos.\
