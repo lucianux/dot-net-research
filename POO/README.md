@@ -527,6 +527,34 @@ public abstract class Juego {
 }
 ```
 
+### Unit of Work
+
+**Qué es:** Un patrón que mantiene un registro de cambios y coordina las operaciones de escritura como una sola transacción.  
+**Cuándo usarlo:** En aplicaciones que manejan persistencia compleja, para garantizar atomicidad.  
+
+```csharp
+public interface IUnitOfWork {
+    IClienteRepository Clientes { get; }
+    IPedidoRepository Pedidos { get; }
+    void Commit();
+}
+```
+
+### Command
+
+**Qué es:** Un patrón de comportamiento que encapsula una solicitud como un objeto.  
+**Cuándo usarlo:** Para parametrizar métodos con operaciones, deshacer/rehacer acciones o colas de tareas.  
+
+```csharp
+public interface ICommand {
+    void Ejecutar();
+}
+
+public class SaludarCommand : ICommand {
+    public void Ejecutar() => Console.WriteLine("Hola!");
+}
+```
+
 ### Resumen
 
 - **Factory:** delega la creación de objetos.\
