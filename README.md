@@ -323,84 +323,149 @@ namespace exampleTestProject
 
 -----
 
-## Comandos útiles en .NET Core
+# .NET 8 CLI Quick Reference (Solution & Project Setup)
 
-### Run
+This document summarizes the most common `dotnet` CLI commands used
+to create and manage multi-project solutions (like **LoanPro**).
 
-dotnet run
+---
 
-dotnet run -p ./PaymentFacilities.WebApi/PaymentFacilities.WebApi.csproj
+## Create a new solution
 
-### Build
+```bash
+dotnet new sln -n LoanPro
+```
 
+Creates a solution file `LoanPro.sln` in the current directory.
+
+---
+
+## Create projects (inside /src)
+
+```bash
+dotnet new web -n LoanPro.Api -o src/LoanPro.Api
+dotnet new classlib -n LoanPro.Application -o src/LoanPro.Application
+dotnet new classlib -n LoanPro.Domain -o src/LoanPro.Domain
+```
+
+Type of projects:
+- `web`: Minimal API / ASP.NET Core web project  
+- `classlib`: Class Library (for Application and Domain layers)
+
+---
+
+## Add projects to the solution
+
+```bash
+dotnet sln add src/LoanPro.Api/LoanPro.Api.csproj
+dotnet sln add src/LoanPro.Application/LoanPro.Application.csproj
+dotnet sln add src/LoanPro.Domain/LoanPro.Domain.csproj
+```
+
+---
+
+## Add project references (dependencies) to the projects
+
+```bash
+# API depends on Application
+dotnet add src/LoanPro.Api/LoanPro.Api.csproj reference src/LoanPro.Application/LoanPro.Application.csproj
+
+# Application depends on Domain
+dotnet add src/LoanPro.Application/LoanPro.Application.csproj reference src/LoanPro.Domain/LoanPro.Domain.csproj
+```
+
+---
+
+## Add NuGet packages
+
+Example: Swagger (Swashbuckle)
+
+```bash
+dotnet add src/LoanPro.Api package Swashbuckle.AspNetCore
+```
+
+You can check all packages added with:
+
+```bash
+dotnet list src/LoanPro.Api package
+```
+
+---
+
+## Build the entire solution
+
+```bash
 dotnet build
+```
 
-### Clean
+---
 
-dotnet clean
+## Run the API
 
-### Test
+```bash
+dotnet run --project src/LoanPro.Api
+```
 
+By default, runs on a random HTTP port (e.g., `http://localhost:5000` or similar).
+
+---
+
+## Run the API on a specific port
+
+Using an environment variable:
+
+```bash
+ASPNETCORE_URLS="http://localhost:5050" dotnet run --project src/LoanPro.Api
+```
+
+Or multiple URLs:
+
+```bash
+ASPNETCORE_URLS="http://localhost:5050;https://localhost:5051" dotnet run --project src/LoanPro.Api
+```
+
+---
+
+## Run tests
+
+```bash
 dotnet test
+```
 
-### Restore
+---
 
-dotnet restore
+## Clean the build outputs
 
-### Show installed packages
+```bash
+dotnet clean
+```
 
-dotnet list [filename].sln package
+---
 
-### Publish a release
+## Publish a release
 
+```bash
 dotnet publish -c Release
+```
 
------
+---
+
+## Useful commands
+
+- `dotnet --list-sdks` → lists installed SDKs  
+- `dotnet --info` → shows environment and runtime details  
+- `dotnet help` → shows available commands  
+- `dotnet new --list` → lists available project templates  
+
+---
+
+**Reference:** [.NET CLI Documentation](https://learn.microsoft.com/dotnet/core/tools/)
+
+---
 
 ## Debugging
 
 - En VSCode, se crea la carpeta .vscode desde la pestaña de debugging (cuando se ejecuta el comando "create a launch.json file").
 - Opcional - En VSCode, cuando se pone play, se crea el archivo tasks.json para crear la regla build.
 - Opcional - se configura launch.json: setear la variable "program".
-
------
-
-## Instalando .NET 5.0 (= Core 4.0) en Linux
-
-### Primero, bajar:
-
-wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-
-sudo dpkg -i packages-microsoft-prod.deb
-
-### Segundo, instalar:
-
-sudo apt-get update; \
-  sudo apt-get install -y apt-transport-https && \
-  sudo apt-get update && \
-  sudo apt-get install -y dotnet-sdk-5.0
-
-### Tercero, check:
-
-dotnet --list-sdks
-
-dotnet --list-runtimes
-
-dotnet --info
-
-### Opcional
-
-sudo apt-get install -y dotnet-sdk-3.1
-
-Fuentes:
-
-https://docs.microsoft.com/en-us/dotnet/core/install/how-to-detect-installed-versions?pivots=os-linux
-
-https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004-
-
-TargetFrameworks en .csproj:
-
-https://docs.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props#targetframeworks
-
-https://docs.microsoft.com/en-us/dotnet/standard/frameworks
 
