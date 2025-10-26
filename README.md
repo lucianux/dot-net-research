@@ -323,7 +323,7 @@ namespace exampleTestProject
 
 -----
 
-# .NET 8 CLI Quick Reference (Solution & Project Setup)
+# .NET 8 CLI Quick Reference
 
 This document summarizes the most common `dotnet` CLI commands used
 to create and manage multi-project solutions (like **LoanPro**).
