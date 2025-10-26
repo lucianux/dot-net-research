@@ -468,4 +468,4 @@ dotnet publish -c Release
 - En VSCode, se crea la carpeta .vscode desde la pestaña de debugging (cuando se ejecuta el comando "create a launch.json file").
 - Opcional - En VSCode, cuando se pone play, se crea el archivo tasks.json para crear la regla build.
 - Opcional - se configura launch.json: setear la variable "program".
-
+- Revisar el proyecto LoanPro que ya lo tiene configurado.
