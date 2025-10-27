@@ -376,6 +376,24 @@ dotnet add src/LoanPro.Application/LoanPro.Application.csproj reference src/Loan
 
 ---
 
+### Creating Test Projects
+
+```bash
+# Domain tests
+dotnet new xunit -n LoanPro.Domain.UnitTests -o tests/LoanPro.Domain.UnitTests
+dotnet add tests/LoanPro.Domain.UnitTests reference src/LoanPro.Domain
+
+# Application tests
+dotnet new xunit -n LoanPro.Application.UnitTests -o tests/LoanPro.Application.UnitTests
+dotnet add tests/LoanPro.Application.UnitTests reference src/LoanPro.Application
+dotnet add tests/LoanPro.Application.UnitTests reference src/LoanPro.Domain
+
+# Add to solution
+dotnet sln add tests/**/*.csproj
+```
+
+---
+
 ## Add NuGet packages
 
 Example: Swagger (Swashbuckle)
